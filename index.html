@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The VA Blueprint - Free Preview: Days 10-12</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --pink: #FF1F7A;
+    --pink-light: #FF6BAB;
+    --pink-pale: #FFF0F6;
+    --black: #0A0A0A;
+    --charcoal: #1C1C1C;
+    --white: #FFFFFF;
+    --gray: #6B6B6B;
+    --gray-light: #F5F5F5;
+    --dot-size: 1.5px;
+    --dot-space: 22px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background-color: var(--white); color: var(--black); min-height: 100vh; background-image: radial-gradient(rgba(255,107,171,0.18) var(--dot-size), transparent var(--dot-size)); background-size: var(--dot-space) var(--dot-space); }
+  .page { max-width: 780px; margin: 0 auto; padding: 48px 32px 80px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; animation: fadeDown 0.5s ease both; }
+  .logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.15rem; letter-spacing: -0.02em; color: var(--black); text-decoration: none; cursor: pointer; }
+  .logo span { color: var(--pink); }
+  .progress-pill { background: var(--black); color: var(--white); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; }
+  .progress-bar-wrap { margin-bottom: 36px; animation: fadeDown 0.5s ease 0.05s both; }
+  .progress-bar-label { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--gray); margin-bottom: 7px; }
+  .progress-bar-track { height: 5px; background: rgba(0,0,0,0.08); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--pink), var(--pink-light)); border-radius: 100px; transition: width 0.6s ease; }
+  .hero { background: var(--black); border-radius: 20px; padding: 48px 44px; margin-bottom: 28px; position: relative; overflow: hidden; animation: fadeUp 0.6s ease 0.1s both; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; background: var(--pink); border-radius: 50%; opacity: 0.18; filter: blur(40px); }
+  .hero::after { content: ''; position: absolute; bottom: -40px; left: 30px; width: 140px; height: 140px; background: var(--pink); border-radius: 50%; opacity: 0.1; filter: blur(30px); }
+  .day-label { display: inline-block; background: var(--pink); color: var(--white); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; margin-bottom: 18px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(1.7rem, 4vw, 2.5rem); line-height: 1.15; color: var(--white); margin-bottom: 14px; position: relative; z-index: 1; }
+  .hero h1 em { font-style: italic; color: var(--pink-light); }
+  .hero p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.65; max-width: 520px; position: relative; z-index: 1; }
+  .pro-tip-banner { background: var(--pink); border-radius: 14px; padding: 20px 28px; margin-bottom: 28px; display: flex; align-items: flex-start; gap: 16px; animation: fadeUp 0.6s ease 0.2s both; }
+  .pro-tip-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 3px; }
+  .pro-tip-banner strong { display: block; color: var(--white); font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; margin-bottom: 5px; opacity: 0.85; }
+  .pro-tip-banner p { color: var(--white); font-weight: 500; font-size: 0.96rem; line-height: 1.55; }
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; animation: fadeUp 0.6s ease 0.3s both; }
+  .card { background: var(--white); border: 1.5px solid rgba(0,0,0,0.09); border-radius: 16px; padding: 24px 22px; position: relative; transition: border-color 0.2s, box-shadow 0.2s; }
+  .card:hover { border-color: var(--pink); box-shadow: 0 4px 24px rgba(255,31,122,0.1); }
+  .card-number { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 2.2rem; color: var(--pink); line-height: 1; opacity: 0.25; position: absolute; top: 18px; right: 20px; }
+  .card h3 { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 10px; }
+  .card p { font-size: 0.92rem; line-height: 1.6; color: var(--charcoal); }
+  .action-section { background: var(--gray-light); border-radius: 16px; padding: 28px 28px 24px; margin-bottom: 28px; animation: fadeUp 0.6s ease 0.35s both; }
+  .section-eyebrow { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; color: var(--pink); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .section-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--pink); opacity: 0.25; }
+  .action-section h2 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.25rem; margin-bottom: 18px; color: var(--black); }
+  .task-list { list-style: none; }
+  .task-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.07); cursor: pointer; user-select: none; }
+  .task-item:last-child { border-bottom: none; }
+  .task-check { width: 24px; height: 24px; border-radius: 50%; border: 2px solid #D1D1D1; flex-shrink: 0; margin-top: 1px; transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1); display: flex; align-items: center; justify-content: center; background: var(--white); }
+  .task-check svg { display: none; width: 12px; height: 12px; }
+  .task-item.done .task-check { background: var(--pink); border-color: var(--pink); box-shadow: 0 2px 10px rgba(255,31,122,0.4); transform: scale(1.08); }
+  .task-item.done .task-check svg { display: block; }
+  .task-item.done .task-text { text-decoration: line-through; opacity: 0.42; }
+  .task-text { font-size: 0.93rem; line-height: 1.5; color: var(--charcoal); transition: opacity 0.2s; padding-top: 3px; }
+  .task-tag { display: inline-block; background: var(--pink-pale); color: var(--pink); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; margin-left: 8px; vertical-align: middle; }
+  .journal-section { background: var(--white); border: 1.5px solid rgba(0,0,0,0.09); border-radius: 16px; padding: 26px 26px 22px; margin-bottom: 28px; animation: fadeUp 0.6s ease 0.4s both; }
+  .journal-section h2 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem; margin-bottom: 6px; color: var(--black); }
+  .journal-section .subtitle { font-size: 0.85rem; color: var(--gray); margin-bottom: 18px; }
+  .journal-prompt { background: var(--pink-pale); border-left: 3px solid var(--pink); padding: 14px 16px; border-radius: 0 10px 10px 0; margin-bottom: 14px; font-size: 0.9rem; font-style: italic; color: var(--charcoal); line-height: 1.55; }
+  textarea { width: 100%; min-height: 110px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 10px; padding: 14px 16px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--charcoal); resize: vertical; outline: none; transition: border-color 0.2s; background: var(--gray-light); }
+  textarea:focus { border-color: var(--pink); background: var(--white); }
+  textarea::placeholder { color: #ABABAB; }
+  .affirmation { background: var(--black); border-radius: 14px; padding: 22px 26px; display: flex; align-items: center; gap: 14px; margin-bottom: 36px; animation: fadeUp 0.6s ease 0.45s both; }
+  .affirmation-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .affirmation p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--white); line-height: 1.5; }
+  .affirmation p span { color: var(--pink-light); }
+  .nav-buttons { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; animation: fadeUp 0.6s ease 0.5s both; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
+  .btn-primary { background: var(--pink); color: var(--white); }
+  .btn-primary:hover { background: #e0156a; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255,31,122,0.3); }
+  .btn-ghost { background: transparent; color: var(--gray); border: 1.5px solid rgba(0,0,0,0.12); }
+  .btn-ghost:hover:not(:disabled) { border-color: var(--black); color: var(--black); }
+  .btn:disabled { opacity: 0.35; cursor: not-allowed; }
+  .day-counter { font-size: 0.8rem; color: var(--gray); font-weight: 500; }
+  .save-notice { text-align: center; font-size: 0.75rem; color: var(--gray); margin-top: 18px; animation: fadeUp 0.5s ease 0.55s both; }
+  .save-notice a { color: var(--pink); text-decoration: none; font-weight: 500; cursor: pointer; }
+  .home-screen { animation: fadeUp 0.5s ease both; }
+  .home-hero { background: var(--black); border-radius: 20px; padding: 52px 44px; margin-bottom: 32px; position: relative; overflow: hidden; text-align: center; }
+  .home-hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; background: var(--pink); border-radius: 50%; opacity: 0.15; filter: blur(60px); }
+  .home-hero::after { content: ''; position: absolute; bottom: -60px; left: -40px; width: 200px; height: 200px; background: var(--pink); border-radius: 50%; opacity: 0.1; filter: blur(40px); }
+  .home-hero h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3rem); color: var(--white); line-height: 1.15; margin-bottom: 14px; position: relative; z-index: 1; }
+  .home-hero h1 em { font-style: italic; color: var(--pink-light); }
+  .home-hero p { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.65; position: relative; z-index: 1; max-width: 480px; margin: 0 auto; }
+  .tracker { background: var(--white); border: 1.5px solid rgba(0,0,0,0.09); border-radius: 20px; padding: 24px; margin-bottom: 28px; }
+  .tracker-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px; }
+  .tracker-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.05rem; color: var(--black); }
+  .tracker-add { background: var(--pink); color: var(--white); border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; padding: 7px 16px; cursor: pointer; transition: all 0.2s; }
+  .tracker-add:hover { background: #e0156a; }
+  .tracker-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px; }
+  .tr-stat { background: var(--gray-light); border-radius: 12px; padding: 14px 10px; text-align: center; }
+  .tr-stat-num { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem; color: var(--pink); line-height: 1; margin-bottom: 4px; }
+  .tr-stat-label { font-size: 0.67rem; color: var(--gray); line-height: 1.3; }
+  .tr-goal-wrap { margin-bottom: 16px; }
+  .tr-goal-top { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--gray); margin-bottom: 6px; }
+  .tr-goal-bar { height: 5px; background: rgba(0,0,0,0.08); border-radius: 100px; overflow: hidden; }
+  .tr-goal-fill { height: 100%; background: linear-gradient(90deg, var(--pink), var(--pink-light)); border-radius: 100px; transition: width 0.6s ease; }
+  .tr-list { border: 1.5px solid rgba(0,0,0,0.07); border-radius: 12px; overflow: hidden; margin-bottom: 12px; }
+  .tr-row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .tr-row:last-child { border-bottom: none; }
+  .tr-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--pink-pale); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 500; color: var(--pink); flex-shrink: 0; }
+  .tr-name { font-size: 0.88rem; font-weight: 500; color: var(--black); }
+  .tr-detail { font-size: 0.73rem; color: var(--gray); margin-top: 1px; }
+  .tr-badge { margin-left: auto; font-size: 0.68rem; font-weight: 500; padding: 3px 10px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
+  .badge-sent { background: var(--pink-pale); color: var(--pink); }
+  .badge-replied { background: #E1F5EE; color: #0F6E56; }
+  .badge-call { background: #FAEEDA; color: #854F0B; }
+  .badge-won { background: var(--pink); color: var(--white); }
+  .tr-empty { text-align: center; padding: 24px 16px; color: var(--gray); font-size: 0.88rem; }
+  .tr-nudge { background: var(--black); border-radius: 12px; padding: 14px 18px; display: flex; align-items: flex-start; gap: 12px; margin-top: 12px; }
+  .tr-nudge-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+  .tr-nudge-text { font-size: 0.82rem; color: var(--white); font-weight: 500; line-height: 1.4; }
+  .tr-nudge-sub { font-size: 0.73rem; color: rgba(255,255,255,0.55); margin-top: 3px; }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; }
+  .modal-box { background: var(--white); border-radius: 20px; padding: 28px; width: 100%; max-width: 420px; }
+  .modal-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.15rem; margin-bottom: 18px; color: var(--black); }
+  .modal-field { margin-bottom: 14px; }
+  .modal-field label { display: block; font-size: 0.75rem; font-weight: 500; color: var(--gray); margin-bottom: 6px; }
+  .modal-field input, .modal-field select { width: 100%; padding: 10px 14px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 10px; font-size: 0.9rem; font-family: 'DM Sans', sans-serif; background: var(--gray-light); color: var(--charcoal); outline: none; transition: border-color 0.2s; }
+  .modal-field input:focus, .modal-field select:focus { border-color: var(--pink); background: var(--white); }
+  .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+  .modal-save { flex: 1; padding: 12px; background: var(--pink); color: var(--white); border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; }
+  .modal-cancel { padding: 12px 20px; background: transparent; color: var(--gray); border: 1.5px solid rgba(0,0,0,0.12); border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; cursor: pointer; }
+  .ai-generator { background: var(--white); border: 1.5px solid rgba(255,31,122,0.18); border-radius: 16px; padding: 26px; margin-bottom: 28px; animation: fadeUp 0.6s ease 0.38s both; }
+  .ai-gen-header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .ai-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--pink-pale); color: var(--pink); font-size: 0.67rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; }
+  .ai-pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--pink); animation: aipulse 1.5s ease-in-out infinite; }
+  @keyframes aipulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+  .ai-gen-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem; color: var(--black); }
+  .ai-gen-subtitle { font-size: 0.83rem; color: var(--gray); margin-bottom: 18px; }
+  .ai-field { margin-bottom: 14px; }
+  .ai-field label { display: block; font-size: 0.75rem; font-weight: 500; color: var(--gray); margin-bottom: 6px; }
+  .ai-input { width: 100%; padding: 10px 14px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 10px; font-size: 0.9rem; font-family: 'DM Sans', sans-serif; background: var(--gray-light); color: var(--charcoal); outline: none; transition: border-color 0.2s; }
+  .ai-input:focus { border-color: var(--pink); background: var(--white); }
+  .ai-textarea { width: 100%; padding: 10px 14px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 10px; font-size: 0.9rem; font-family: 'DM Sans', sans-serif; background: var(--gray-light); color: var(--charcoal); outline: none; transition: border-color 0.2s; resize: none; min-height: 80px; }
+  .ai-textarea:focus { border-color: var(--pink); background: var(--white); }
+  .ai-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .ai-gen-btn { width: 100%; padding: 13px; background: var(--pink); color: var(--white); border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: all 0.2s; margin-top: 4px; }
+  .ai-gen-btn:hover { background: #e0156a; transform: translateY(-1px); }
+  .ai-gen-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .ai-result { background: var(--gray-light); border-radius: 12px; padding: 18px; margin-top: 18px; }
+  .ai-result-label { font-size: 0.67rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pink); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .ai-result-label::after { content: ''; flex: 1; height: 1px; background: var(--pink); opacity: 0.25; }
+  .ai-script { font-size: 0.92rem; line-height: 1.75; color: var(--charcoal); white-space: pre-wrap; min-height: 40px; }
+  .ai-meta { font-size: 0.73rem; color: var(--gray); margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(0,0,0,0.07); display: flex; gap: 14px; flex-wrap: wrap; }
+  .ai-actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px; }
+  .ai-action-btn { padding: 9px 8px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 8px; background: var(--white); font-size: 0.78rem; font-family: 'DM Sans', sans-serif; color: var(--gray); cursor: pointer; transition: all 0.15s; text-align: center; }
+  .ai-action-btn:hover { border-color: var(--pink); color: var(--pink); }
+  .ai-copied { background: #E1F5EE !important; color: #0F6E56 !important; border-color: #5DCAA5 !important; }
+  .ai-variants-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray); margin: 14px 0 8px; }
+  .ai-variants { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .ai-variant { background: var(--white); border: 1.5px solid rgba(0,0,0,0.08); border-radius: 10px; padding: 12px; cursor: pointer; transition: border-color 0.15s; }
+  .ai-variant:hover { border-color: var(--pink); }
+  .ai-variant-tone { font-size: 0.72rem; font-weight: 500; color: var(--pink); margin-bottom: 5px; }
+  .ai-variant-preview { font-size: 0.8rem; color: var(--gray); line-height: 1.45; }
+  .ai-limit { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; }
+  .ai-limit-text { font-size: 0.72rem; color: var(--gray); }
+  .ai-limit-dots { display: flex; gap: 4px; }
+  .ai-ldot { width: 8px; height: 8px; border-radius: 50%; background: var(--pink); }
+  .ai-ldot.empty { background: rgba(0,0,0,0.1); }
+  .ai-nudge { background: var(--black); border-radius: 12px; padding: 14px 18px; display: flex; align-items: flex-start; gap: 12px; margin-top: 14px; }
+  .ai-nudge-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+  .ai-nudge-text { font-size: 0.82rem; color: var(--white); font-weight: 500; line-height: 1.4; }
+  .ai-nudge-sub { font-size: 0.73rem; color: rgba(255,255,255,0.55); margin-top: 3px; }
+  .status-select { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; font-weight: 500; padding: 3px 8px; border-radius: 100px; border: none; cursor: pointer; outline: none; flex-shrink: 0; appearance: none; -webkit-appearance: none; }
+  .status-select.badge-sent { background: var(--pink-pale); color: var(--pink); }
+  .status-select.badge-replied { background: #E1F5EE; color: #0F6E56; }
+  .status-select.badge-call { background: #FAEEDA; color: #854F0B; }
+  .status-select.badge-won { background: var(--pink); color: var(--white); }
+  .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes blink { 0%,80%,100%{opacity:0} 40%{opacity:1} }
+  .week-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; color: var(--pink); margin: 28px 0 12px; display: flex; align-items: center; gap: 8px; }
+  .week-label::after { content: ''; flex: 1; height: 1px; background: var(--pink); opacity: 0.25; }
+  .days-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 6px; }
+  .day-btn { background: var(--white); border: 1.5px solid rgba(0,0,0,0.09); border-radius: 12px; padding: 14px 8px; text-align: center; cursor: pointer; transition: all 0.18s; font-family: 'DM Sans', sans-serif; }
+  .day-btn:hover { border-color: var(--pink); box-shadow: 0 3px 14px rgba(255,31,122,0.12); transform: translateY(-2px); }
+  .day-btn.completed { border-color: var(--pink); background: var(--pink-pale); }
+  .day-btn .dn { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.3rem; color: var(--pink); line-height: 1; }
+  .day-btn .dt { font-size: 0.65rem; color: var(--gray); margin-top: 4px; line-height: 1.3; }
+  .overall-progress { background: var(--gray-light); border-radius: 14px; padding: 20px 24px; margin-top: 24px; }
+  .overall-progress h3 { font-size: 0.8rem; font-weight: 500; color: var(--gray); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .big-progress { display: flex; align-items: center; gap: 16px; }
+  .big-progress-bar { flex: 1; height: 8px; background: rgba(0,0,0,0.08); border-radius: 100px; overflow: hidden; }
+  .big-progress-fill { height: 100%; background: linear-gradient(90deg, var(--pink), var(--pink-light)); border-radius: 100px; transition: width 0.6s ease; }
+  .big-progress-pct { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem; color: var(--pink); white-space: nowrap; }
+  .bonus-section { background: var(--black); border-radius: 20px; padding: 28px 32px; margin-top: 28px; display: flex; align-items: center; gap: 20px; position: relative; overflow: hidden; }
+  .bonus-section::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: var(--pink); border-radius: 50%; opacity: 0.15; filter: blur(40px); }
+  .bonus-badge { background: var(--pink); color: var(--white); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; align-self: flex-start; margin-top: 4px; }
+  .bonus-section h3 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem; color: var(--white); margin-bottom: 6px; position: relative; z-index: 1; }
+  .bonus-section p { color: rgba(255,255,255,0.6); font-size: 0.88rem; line-height: 1.55; margin-bottom: 14px; position: relative; z-index: 1; }
+  .bonus-body { position: relative; z-index: 1; }
+  .tab-nav { display: flex; gap: 8px; }
+  .tab-btn { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; padding: 7px 16px; border-radius: 100px; border: none; cursor: pointer; transition: all 0.2s; }
+  .tab-black { background: var(--black); color: var(--white); }
+  .tab-black:hover { background: var(--charcoal); }
+  .tab-black.tab-inactive { background: transparent; color: var(--gray); border: 1.5px solid rgba(0,0,0,0.12); }
+  .tab-pink { background: var(--pink); color: var(--white); }
+  .tab-pink:hover { background: #e0156a; }
+  .tab-pink.tab-inactive { background: transparent; color: var(--pink); border: 1.5px solid rgba(255,31,122,0.35); }
+  .pipeline-cta { display: flex; align-items: center; justify-content: space-between; background: var(--pink-pale); border: 1.5px solid rgba(255,31,122,0.2); border-radius: 14px; padding: 16px 20px; margin-bottom: 28px; gap: 14px; animation: fadeUp 0.6s ease 0.38s both; }
+  .pipeline-cta-text { font-size: 0.88rem; color: var(--charcoal); line-height: 1.45; }
+  .pipeline-cta-text strong { color: var(--pink); display: block; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; }
+  .btn-pipeline { background: var(--pink); color: var(--white); padding: 9px 18px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500; border: none; cursor: pointer; white-space: nowrap; transition: all 0.2s; flex-shrink: 0; }
+  .btn-pipeline:hover { background: #e0156a; transform: translateY(-1px); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 580px) {
+    .page { padding: 24px 16px 60px; }
+    .hero { padding: 30px 22px; }
+    .home-hero { padding: 36px 24px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .days-grid { grid-template-columns: repeat(3, 1fr); }
+    .bonus-section { flex-direction: column; gap: 14px; }
+    .tracker-stats { grid-template-columns: repeat(2, 1fr); }
+    .ai-row { grid-template-columns: 1fr; }
+    .ai-actions { grid-template-columns: 1fr 1fr; }
+    .ai-variants { grid-template-columns: 1fr; }
+    .nav-buttons { justify-content: center; }
+  }
+
+  .sticky-banner { position: fixed; bottom: 0; left: 0; right: 0; background: var(--black); z-index: 200; padding: 14px 20px; display: flex; align-items: center; justify-content: center; gap: 16px; box-shadow: 0 -4px 24px rgba(0,0,0,0.15); }
+  .sticky-banner-text { color: var(--white); font-size: 0.88rem; font-weight: 500; }
+  .sticky-banner-text s { color: var(--gray); font-weight: 400; }
+  .sticky-banner-text strong { color: var(--pink-light); }
+  .sticky-banner .btn-primary { flex-shrink: 0; font-size: 0.82rem; padding: 10px 20px; }
+  .preview-pill { background: var(--pink-pale); color: var(--pink); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; }
+  .unlock-cta { background: linear-gradient(135deg, var(--black) 0%, #1a1a2e 100%); border-radius: 20px; padding: 40px 36px; margin-top: 36px; text-align: center; position: relative; overflow: hidden; animation: fadeUp 0.6s ease 0.3s both; }
+  .unlock-cta::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; background: var(--pink); border-radius: 50%; opacity: 0.15; filter: blur(50px); }
+  .unlock-cta::after { content: ''; position: absolute; bottom: -40px; left: -20px; width: 160px; height: 160px; background: var(--pink-light); border-radius: 50%; opacity: 0.1; filter: blur(40px); }
+  .unlock-cta h2 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(1.4rem, 3.5vw, 1.8rem); color: var(--white); margin-bottom: 12px; position: relative; z-index: 1; }
+  .unlock-cta h2 em { font-style: italic; color: var(--pink-light); }
+  .unlock-cta p { color: rgba(255,255,255,0.6); font-size: 0.92rem; line-height: 1.6; max-width: 460px; margin: 0 auto 20px; position: relative; z-index: 1; }
+  .unlock-cta .price-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px; position: relative; z-index: 1; }
+  .unlock-cta .price-old { font-size: 1.1rem; color: var(--gray); text-decoration: line-through; }
+  .unlock-cta .price-new { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 2.2rem; color: var(--pink-light); }
+  .unlock-cta .price-note { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-bottom: 20px; position: relative; z-index: 1; }
+  .unlock-cta .btn-primary { font-size: 1rem; padding: 15px 32px; position: relative; z-index: 1; }
+  .unlock-cta .code-hint { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 14px; position: relative; z-index: 1; }
+  .unlock-cta .code-hint code { background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; color: var(--pink-light); font-family: 'DM Sans', sans-serif; font-weight: 500; letter-spacing: 0.05em; }
+  .footer-note { text-align: center; font-size: 0.73rem; color: var(--gray); margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.07); animation: fadeUp 0.5s ease 0.5s both; }
+  .footer-note a { color: var(--pink); text-decoration: none; font-weight: 500; }
+  .footer-note a:hover { text-decoration: underline; }
+  body { padding-bottom: 80px; }
+  @media (max-width: 580px) {
+    .sticky-banner { flex-direction: column; gap: 8px; padding: 12px 16px; }
+    .sticky-banner-text { font-size: 0.8rem; text-align: center; }
+    .unlock-cta { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topbar">
+    <a class="logo" onclick="showHome()">Virtu<span>easy</span></a>
+    <div class="preview-pill">Free Preview</div>
+  </div>
+  <div id="homeScreen"></div>
+  <div id="dayScreen" style="display:none;"></div>
+</div>
+<div class="sticky-banner">
+  <div class="sticky-banner-text">Get all 30 days + AI tools: <s>$27</s> <strong>$13</strong></div>
+  <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary">Unlock Full Blueprint</a>
+</div>
+<script>
+const PROXY_URL = 'https://workbook-theta.vercel.app/api/generate';
+const DAYS = [
+  { title:"Create Content That Attracts Clients", titleEm:"That Attracts Clients", focus:"You don\u2019t need a huge audience. You need the right 10 people to see the right post. Let\u2019s create it.", proTip:"The posts that get VAs hired are never the ones that say \u2018I\u2019m available for clients.\u2019 They\u2019re the ones that demonstrate expertise \u2014 a behind-the-scenes of a system you built, a mistake you see businesses make, a result you helped someone get. Show the work. Let the offer be implied.", time:"30", win:"One piece of content published today that speaks directly to your niche\u2019s pain point.", tasks:[{text:"Write a post that starts with a bold statement about your niche\u2019s biggest problem",tag:"15 min"},{text:"Include a specific insight, tip, or perspective \u2014 not generic advice",tag:"Edit"},{text:"End with a soft CTA: a question, a DM invite, or a comment prompt",tag:"5 min"},{text:"Post it on LinkedIn AND the Facebook groups you joined yesterday",tag:"Publish"}], prompt:"What\u2019s one thing I know about my niche that most people get wrong? What would I tell them if they were sitting right across from me?", affirmation:"\"Content doesn\u2019t build audiences. <span>It builds trust. One right person reading the right post changes everything.</span>\"" },
+  { title:"Master the Discovery Call", titleEm:"Discovery Call", focus:"Discovery calls aren\u2019t interviews \u2014 they\u2019re diagnostic conversations. Today you build your framework.", proTip:"The most powerful thing you can do on a discovery call is repeat their words back to them. Write down their exact phrasing. Then when you present your offer, use their language \u2014 not yours. It makes the solution feel tailor-made, because in that moment, it is.", time:"25", win:"A 5-question discovery call script you can use on your next prospect call.", tasks:[{text:"Write 5 open-ended questions that uncover your prospect\u2019s problem and urgency",tag:"15 min"},{text:"Script your opening 90 seconds: who you are, what the call will cover, what they can expect",tag:"5 min"},{text:"Plan your close: how will you present your offer and pricing at the end?",tag:"5 min"},{text:"Practice the full call out loud \u2014 record yourself on your phone",tag:"Practice"}], prompt:"What questions, if answered, would tell me everything I need to know about whether this person is the right client? What would a great discovery call feel like?", affirmation:"\"The best closer isn\u2019t the best talker. <span>They\u2019re the best listener.</span>\"",
+    aiGenerator:{ type:"discovery", title:"AI discovery call question generator", subtitle:"Get a customised set of diagnostic questions for your specific niche.", fields:[{id:"niche",label:"Your niche",placeholder:"e.g. online course creators",type:"input"},{id:"pain",label:"Their main pain point",placeholder:"e.g. overwhelmed with launch admin",type:"input"},{id:"goal",label:"Outcome you help them achieve",placeholder:"e.g. a stress-free launch",type:"input"}],
+    buildPrompt:function(v){return 'Write 5 open-ended discovery call questions for a virtual assistant speaking with a '+v.niche+'. The prospect\'s main pain: '+v.pain+'. The VA helps them achieve: '+v.goal+'. Questions should uncover urgency, budget readiness, past attempts, and decision-making process. Make them feel like a trusted advisor, not a job interview. Return ONLY the 5 numbered questions, nothing else.';},
+    nudge:{text:"Save these questions before your next call.",sub:"The full blueprint has 27 more days of strategies, scripts, and AI tools like this one."} }
+  },
+  { title:"Handle Objections Before They Happen", titleEm:"Before They Happen", focus:"\"I need to think about it\" is code for something. Today you learn to decode it \u2014 and respond with confidence.", proTip:"The objection you fear most is the one you\u2019re least prepared for \u2014 and prospects sense that hesitation. Rehearse your responses until they feel natural, not defensive. The goal isn\u2019t to win an argument. It\u2019s to help someone who wants to say yes find a reason to.", time:"20", win:"A written response to the 3 most common objections in your niche.", tasks:[{text:"List the top 3 objections you expect: price, timing, \"I'll do it myself\"",tag:"5 min"},{text:"For each one, write a response that acknowledges, reframes, and redirects \u2014 not defends",tag:"15 min"},{text:"Role-play each objection with a friend, partner, or yourself in the mirror",tag:"Practice"},{text:"Save your responses where you can reference them before every call",tag:"Save"}], prompt:"What am I most afraid someone will say on a call? Why does that feel threatening \u2014 and what\u2019s the truth underneath my fear?", affirmation:"\"An objection is not a rejection. <span>It\u2019s a question wearing a trench coat.</span>\"" }
+];
+
+let currentDay = null;
+let aiGenerations = parseInt(localStorage.getItem('va_preview_ai_gens') || '0');
+const AI_MAX = 5;
+
+function getCompletedDays() { return JSON.parse(localStorage.getItem('va_preview_completed') || '[]'); }
+function markDayComplete(i) { const c = getCompletedDays(); if (!c.includes(i)) { c.push(i); localStorage.setItem('va_preview_completed', JSON.stringify(c)); } }
+
+function showHome() {
+  currentDay = null;
+  document.getElementById('homeScreen').style.display = '';
+  document.getElementById('dayScreen').style.display = 'none';
+  renderHome();
+  window.scrollTo(0,0);
+}
+
+function renderHome() {
+  const completed = getCompletedDays();
+  const pct = Math.round((completed.length / 3) * 100);
+  const shortTitles = DAYS.map(d => { const w = d.title.split(' '); return w.slice(0,3).join(' ') + (w.length > 3 ? '\u2026' : ''); });
+  let html = `<div class="home-screen">
+  <div class="home-hero"><h1>Free Preview:<br><em>Days 10\u201312</em></h1><p>Try 3 real days from The VA Blueprint. Fully interactive. See what the full 30-day system feels like.</p></div>
+  <div class="overall-progress" style="margin-top:0;margin-bottom:28px;"><h3>Preview Progress</h3><div class="big-progress"><div class="big-progress-bar"><div class="big-progress-fill" style="width:${pct}%"></div></div><div class="big-progress-pct">${completed.length}/3 days</div></div></div>
+  <div class="days-grid">`;
+  DAYS.forEach((d, i) => {
+    const done = completed.includes(i);
+    html += `<div class="day-btn ${done?'completed':''}" onclick="showDay(${i})"><div class="dn">Day ${i+10}${done?' \u2713':''}</div><div class="dt">${shortTitles[i]}</div></div>`;
+  });
+  html += `</div>
+  <div class="unlock-cta">
+    <h2>Ready for all <em>30 days</em>?</h2>
+    <p>This preview is just 3 days. The full VA Blueprint gives you 30 days of step-by-step action, AI-powered script generators, a built-in client pipeline tracker, and daily journal prompts.</p>
+    <div class="price-row"><span class="price-old">$27</span><span class="price-new">$13</span></div>
+    <div class="price-note">Preview-only discount. Use code at checkout.</div>
+    <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary">Get the Full Blueprint</a>
+    <div class="code-hint">Use code <code>PREVIEW30</code> at checkout</div>
+  </div>
+  <div class="footer-note">Owned and operated by <a href="https://messickmarketing.com/" target="_blank">Messick Marketing</a></div>
+  </div>`;
+  document.getElementById('homeScreen').innerHTML = html;
+}
+
+function showDay(index) {
+  currentDay = index;
+  document.getElementById('homeScreen').style.display = 'none';
+  document.getElementById('dayScreen').style.display = '';
+  renderDay(index);
+  window.scrollTo(0,0);
+}
+
+function renderDay(index) {
+  const d = DAYS[index];
+  const savedTasks = JSON.parse(localStorage.getItem(`va_preview_day${index}_tasks`) || '[]');
+  const savedJournal = localStorage.getItem(`va_preview_day${index}_journal`) || '';
+  const doneCount = savedTasks.filter(Boolean).length;
+  const total = d.tasks.length;
+  const progressPct = ((index+1)/3)*100;
+  const heroTitle = d.titleEm ? d.title.replace(d.titleEm, '<em>'+d.titleEm+'</em>') : d.title;
+  const isFirst = index === 0, isLast = index === 2;
+  const timeDisplay = ['All day','Ongoing','However long it takes'].includes(d.time) ? d.time : d.time+' min';
+
+  const tasksHtml = d.tasks.map((t,i) => `<li class="task-item ${savedTasks[i]?'done':''}" onclick="toggleTask(this,${index},${i})">
+    <div class="task-check"><svg viewBox='0 0 13 10' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1.5 5L5 8.5L11.5 1.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg></div>
+    <div class="task-text">${t.text} <span class="task-tag">${t.tag}</span></div>
+  </li>`).join('');
+
+  const aiHtml = d.aiGenerator ? renderAIGenerator(d.aiGenerator, index) : '';
+
+  document.getElementById('dayScreen').innerHTML = `
+  <div style="animation:fadeDown 0.4s ease both;"><button class="btn btn-ghost" onclick="showHome()" style="margin-bottom:28px;font-size:0.82rem;">\u2190 All Days</button></div>
+  <div class="progress-bar-wrap"><div class="progress-bar-label"><span>Preview Progress</span><span>Day ${index+1} of 3</span></div><div class="progress-bar-track"><div class="progress-bar-fill" style="width:${progressPct}%"></div></div></div>
+  <div class="hero"><div class="day-label">Day ${index+10} of 30</div><h1>${heroTitle}</h1><p>${d.focus}</p></div>
+  <div class="pro-tip-banner"><div class="pro-tip-icon">\ud83d\udca1</div><div><strong>Pro tip</strong><p>${d.proTip}</p></div></div>
+  <div class="card-grid">
+    <div class="card"><div class="card-number">${d.time}</div><h3>Time Required</h3><p>${timeDisplay} of focused work. Progress over perfection.</p></div>
+    <div class="card"><div class="card-number">1</div><h3>Big Win Today</h3><p>${d.win}</p></div>
+  </div>
+  <div class="action-section"><div class="section-eyebrow">Today\u2019s Tasks</div><h2>Do These ${total} Things</h2><ul class="task-list" id="taskList">${tasksHtml}</ul></div>
+  ${aiHtml}
+  <div class="journal-section"><div class="section-eyebrow">Reflection</div><h2>Your Daily Journal</h2><p class="subtitle">Takes 2 minutes. Skipping this is skipping results.</p><div class="journal-prompt">${d.prompt}</div><textarea id="journalEntry" placeholder="Write your answer here. No judgment, no editing \u2014 just think out loud..." oninput="saveJournal(${index})">${savedJournal}</textarea></div>
+  <div class="affirmation"><div class="affirmation-icon">\u2728</div><p>${d.affirmation}</p></div>
+  <div class="nav-buttons">
+    <button class="btn btn-ghost" onclick="${isFirst?'showHome()':`showDay(${index-1})`}">\u2190 ${isFirst?'Home':`Day ${index+9}`}</button>
+    <span class="day-counter" id="taskCounter">${doneCount} / ${total} tasks done</span>
+    <button class="btn btn-primary" onclick="${isLast?'showHome()':`showDay(${index+1})`}">${isLast?'See Results \u2192':`Day ${index+11} \u2192`}</button>
+  </div>
+  <p class="save-notice">Your notes auto-save in this browser. <a onclick="downloadNotes(${index})">Download Day ${index+10} notes</a></p>
+  <div class="footer-note">Owned and operated by <a href="https://messickmarketing.com/" target="_blank">Messick Marketing</a></div>`;
+}
+
+function renderAIGenerator(gen, dayIndex) {
+  const rem = AI_MAX - aiGenerations;
+  const dots = Array.from({length:5},(_,i) => `<div class="ai-ldot ${i < rem?'':'empty'}"></div>`).join('');
+  let fieldsHtml = '';
+  const rowable = gen.fields.filter(f => f.type !== 'textarea');
+  const textareas = gen.fields.filter(f => f.type === 'textarea');
+  let i = 0;
+  while (i < rowable.length) {
+    if (i+1 < rowable.length) { fieldsHtml += `<div class="ai-row">${renderField(rowable[i],dayIndex)}${renderField(rowable[i+1],dayIndex)}</div>`; i+=2; }
+    else { fieldsHtml += renderField(rowable[i],dayIndex); i++; }
+  }
+  textareas.forEach(f => { fieldsHtml += renderField(f,dayIndex); });
+  return `<div class="ai-generator">
+    <div class="ai-gen-header"><div class="ai-badge"><div class="ai-pulse"></div> AI powered</div></div>
+    <div class="ai-gen-title">${gen.title}</div>
+    <div class="ai-gen-subtitle">${gen.subtitle}</div>
+    ${fieldsHtml}
+    <button class="ai-gen-btn" id="aiBtn${dayIndex}" onclick="aiGenerate(${dayIndex})">Generate \u2192</button>
+    <div id="aiResult${dayIndex}" style="display:none;">
+      <div class="ai-result">
+        <div class="ai-result-label">Your personalised script</div>
+        <div class="ai-script" id="aiScript${dayIndex}"></div>
+        <div class="ai-meta" id="aiMeta${dayIndex}"></div>
+        <div class="ai-actions">
+          <button class="ai-action-btn" id="aiCopy${dayIndex}" onclick="aiCopy(${dayIndex})">Copy</button>
+          <button class="ai-action-btn" onclick="aiGenerate(${dayIndex})">Regenerate</button>
+          <button class="ai-action-btn" onclick="aiShorter(${dayIndex})">Make shorter</button>
+        </div>
+      </div>
+      <div class="ai-variants-label">2 more variations</div>
+      <div class="ai-variants" id="aiVariants${dayIndex}"></div>
+      <div class="ai-nudge" id="aiNudge${dayIndex}" style="display:none;"><div class="ai-nudge-icon">\ud83d\udca1</div><div><div class="ai-nudge-text">${gen.nudge.text}</div><div class="ai-nudge-sub">${gen.nudge.sub}</div></div></div>
+    </div>
+    <div class="ai-limit"><span class="ai-limit-text" id="aiLimitText${dayIndex}">${rem} generation${rem!==1?'s':''} remaining (preview)</span><div class="ai-limit-dots" id="aiLimitDots${dayIndex}">${dots}</div></div>
+  </div>`;
+}
+
+function renderField(f, dayIndex) {
+  const id = `ai_${dayIndex}_${f.id}`;
+  if (f.type === 'select') return `<div class="ai-field"><label>${f.label}</label><select id="${id}" class="ai-input" style="cursor:pointer;">${f.options.map(o=>`<option>${o}</option>`).join('')}</select></div>`;
+  if (f.type === 'textarea') return `<div class="ai-field"><label>${f.label}</label><textarea id="${id}" class="ai-textarea" placeholder="${f.placeholder||''}" rows="3"></textarea></div>`;
+  return `<div class="ai-field"><label>${f.label}</label><input id="${id}" class="ai-input" placeholder="${f.placeholder||''}"></div>`;
+}
+
+function getFieldValues(gen, dayIndex) {
+  const v = {};
+  gen.fields.forEach(f => { const el = document.getElementById(`ai_${dayIndex}_${f.id}`); if (el) v[f.id] = el.value.trim(); });
+  return v;
+}
+
+function updateAILimit(dayIndex) {
+  const rem = AI_MAX - aiGenerations;
+  const t = document.getElementById(`aiLimitText${dayIndex}`);
+  const d = document.getElementById(`aiLimitDots${dayIndex}`);
+  if (t) t.textContent = `${rem} generation${rem!==1?'s':''} remaining (preview)`;
+  if (d) d.innerHTML = Array.from({length:5},(_,i) => `<div class="ai-ldot ${i < rem?'':'empty'}"></div>`).join('');
+}
+
+async function aiGenerate(dayIndex, customPrompt) {
+  if (aiGenerations >= AI_MAX) return;
+  const d = DAYS[dayIndex];
+  const gen = d.aiGenerator;
+  const values = getFieldValues(gen, dayIndex);
+  if (!values[gen.fields[0].id]) { document.getElementById(`ai_${dayIndex}_${gen.fields[0].id}`).focus(); return; }
+  const btn = document.getElementById(`aiBtn${dayIndex}`);
+  btn.disabled = true; btn.textContent = 'Generating\u2026';
+  const resultEl = document.getElementById(`aiResult${dayIndex}`);
+  resultEl.style.display = 'block';
+  const scriptEl = document.getElementById(`aiScript${dayIndex}`);
+  scriptEl.innerHTML = '<span class="loading-dots"><span>\u2022</span><span>\u2022</span><span>\u2022</span></span>';
+  document.getElementById(`aiMeta${dayIndex}`).textContent = '';
+  document.getElementById(`aiVariants${dayIndex}`).innerHTML = '';
+  document.getElementById(`aiNudge${dayIndex}`).style.display = 'none';
+  const prompt = customPrompt || gen.buildPrompt(values);
+  try {
+    const response = await fetch(PROXY_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({prompt, stream:true}) });
+    if (!response.ok) throw new Error('error');
+    scriptEl.textContent = '';
+    let fullText = '';
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    while (true) {
+      const {done, value} = await reader.read();
+      if (done) break;
+      for (const line of decoder.decode(value).split('\n')) {
+        if (line.startsWith('data: ')) {
+          const data = line.slice(6);
+          if (data === '[DONE]') break;
+          try { const p = JSON.parse(data); if (p.type==='content_block_delta'&&p.delta?.text) { fullText+=p.delta.text; scriptEl.textContent=fullText; } } catch(e) {}
+        }
+      }
+    }
+    const wc = fullText.trim().split(/\s+/).filter(Boolean).length;
+    document.getElementById(`aiMeta${dayIndex}`).innerHTML = `<span>${wc} words</span><span>reads in ~${Math.round(wc/238*60)}s</span>`;
+    localStorage.setItem(`va_preview_ai_script_${dayIndex}`, fullText);
+    aiGenerations++; localStorage.setItem('va_preview_ai_gens', aiGenerations);
+    updateAILimit(dayIndex);
+    aiGenerateVariants(gen, values, dayIndex);
+    setTimeout(() => { document.getElementById(`aiNudge${dayIndex}`).style.display = 'flex'; }, 1000);
+  } catch(e) {
+    scriptEl.textContent = 'Could not connect. Please try again in a moment.';
+  }
+  btn.disabled = false; btn.textContent = 'Generate \u2192';
+}
+
+async function aiShorter(dayIndex) {
+  const last = localStorage.getItem(`va_preview_ai_script_${dayIndex}`);
+  if (!last) return;
+  await aiGenerate(dayIndex, `Shorten this to under 50 words while keeping the key insight and soft question. Return ONLY the shortened text:\n\n${last}`);
+}
+
+async function aiGenerateVariants(gen, values, dayIndex) {
+  const tones = ['Alternative angle','More concise'];
+  const grid = document.getElementById(`aiVariants${dayIndex}`);
+  grid.innerHTML = tones.map(t=>`<div class="ai-variant"><div class="ai-variant-tone">${t}</div><div class="ai-variant-preview loading-dots"><span>\u2022</span><span>\u2022</span><span>\u2022</span></div></div>`).join('');
+  for (let i = 0; i < tones.length; i++) {
+    try {
+      const res = await fetch(PROXY_URL, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt: gen.buildPrompt({...values,tone:tones[i]}) + ' Return only the first sentence as a hook preview, nothing else.'})});
+      const data = await res.json();
+      const text = data.content || '';
+      grid.children[i].querySelector('.ai-variant-preview').textContent = text + '\u2026';
+      const fp = gen.buildPrompt({...values,tone:tones[i]});
+      grid.children[i].onclick = () => aiGenerate(dayIndex, fp);
+    } catch(e) { grid.children[i].querySelector('.ai-variant-preview').textContent = 'Could not load.'; }
+  }
+}
+
+function aiCopy(dayIndex) {
+  const text = document.getElementById(`aiScript${dayIndex}`).textContent;
+  if (!text || text.includes('\u2022')) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById(`aiCopy${dayIndex}`);
+    btn.textContent = 'Copied!'; btn.classList.add('ai-copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('ai-copied'); }, 2000);
+  });
+}
+
+function toggleTask(item, dayIndex, taskIndex) {
+  item.classList.toggle('done');
+  const items = document.querySelectorAll('#taskList .task-item');
+  const states = [...items].map(t => t.classList.contains('done'));
+  localStorage.setItem(`va_preview_day${dayIndex}_tasks`, JSON.stringify(states));
+  const doneCount = states.filter(Boolean).length;
+  document.getElementById('taskCounter').textContent = `${doneCount} / ${states.length} tasks done`;
+  if (doneCount === states.length) markDayComplete(dayIndex);
+}
+
+function saveJournal(dayIndex) { localStorage.setItem(`va_preview_day${dayIndex}_journal`, document.getElementById('journalEntry').value); }
+
+function downloadNotes(dayIndex) {
+  const d = DAYS[dayIndex];
+  const tasks = [...document.querySelectorAll('#taskList .task-item')].map(t => `${t.classList.contains('done')?'[x]':'[ ]'} ${t.querySelector('.task-text').textContent.trim()}`).join('\n');
+  const journal = document.getElementById('journalEntry').value || '(no notes written yet)';
+  const content = `THE VA BLUEPRINT (PREVIEW) \u2014 Day ${dayIndex+10} Notes\n${'='.repeat(48)}\n\nDAY TITLE: ${d.title}\n\nTASKS:\n${tasks}\n\nJOURNAL PROMPT:\n${d.prompt}\n\nMY ANSWER:\n${journal}\n\nDate saved: ${new Date().toLocaleDateString()}\n\nGet the full 30-day blueprint at $13 with code PREVIEW30: https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05`;
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content],{type:'text/plain'}));
+  a.download = `VA-Blueprint-Day${dayIndex+10}-Notes.txt`;
+  a.click();
+}
+
+showHome();
+</script>
+</body>
+</html>
