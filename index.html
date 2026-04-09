@@ -6,7 +6,6 @@
 <title>The VA Blueprint - Free Preview: Days 10-12</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-
   :root {
     --pink: #FF1F7A;
     --pink-light: #FF6BAB;
@@ -89,45 +88,18 @@
   .home-hero h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2rem, 5vw, 3rem); color: var(--white); line-height: 1.15; margin-bottom: 14px; position: relative; z-index: 1; }
   .home-hero h1 em { font-style: italic; color: var(--pink-light); }
   .home-hero p { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.65; position: relative; z-index: 1; max-width: 480px; margin: 0 auto; }
-  .tracker { background: var(--white); border: 1.5px solid rgba(0,0,0,0.09); border-radius: 20px; padding: 24px; margin-bottom: 28px; }
-  .tracker-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px; }
-  .tracker-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.05rem; color: var(--black); }
-  .tracker-add { background: var(--pink); color: var(--white); border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; padding: 7px 16px; cursor: pointer; transition: all 0.2s; }
-  .tracker-add:hover { background: #e0156a; }
-  .tracker-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px; }
-  .tr-stat { background: var(--gray-light); border-radius: 12px; padding: 14px 10px; text-align: center; }
-  .tr-stat-num { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem; color: var(--pink); line-height: 1; margin-bottom: 4px; }
-  .tr-stat-label { font-size: 0.67rem; color: var(--gray); line-height: 1.3; }
-  .tr-goal-wrap { margin-bottom: 16px; }
-  .tr-goal-top { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--gray); margin-bottom: 6px; }
-  .tr-goal-bar { height: 5px; background: rgba(0,0,0,0.08); border-radius: 100px; overflow: hidden; }
-  .tr-goal-fill { height: 100%; background: linear-gradient(90deg, var(--pink), var(--pink-light)); border-radius: 100px; transition: width 0.6s ease; }
-  .tr-list { border: 1.5px solid rgba(0,0,0,0.07); border-radius: 12px; overflow: hidden; margin-bottom: 12px; }
-  .tr-row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid rgba(0,0,0,0.06); }
-  .tr-row:last-child { border-bottom: none; }
-  .tr-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--pink-pale); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 500; color: var(--pink); flex-shrink: 0; }
-  .tr-name { font-size: 0.88rem; font-weight: 500; color: var(--black); }
-  .tr-detail { font-size: 0.73rem; color: var(--gray); margin-top: 1px; }
-  .tr-badge { margin-left: auto; font-size: 0.68rem; font-weight: 500; padding: 3px 10px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
-  .badge-sent { background: var(--pink-pale); color: var(--pink); }
-  .badge-replied { background: #E1F5EE; color: #0F6E56; }
-  .badge-call { background: #FAEEDA; color: #854F0B; }
-  .badge-won { background: var(--pink); color: var(--white); }
-  .tr-empty { text-align: center; padding: 24px 16px; color: var(--gray); font-size: 0.88rem; }
-  .tr-nudge { background: var(--black); border-radius: 12px; padding: 14px 18px; display: flex; align-items: flex-start; gap: 12px; margin-top: 12px; }
-  .tr-nudge-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
-  .tr-nudge-text { font-size: 0.82rem; color: var(--white); font-weight: 500; line-height: 1.4; }
-  .tr-nudge-sub { font-size: 0.73rem; color: rgba(255,255,255,0.55); margin-top: 3px; }
-  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; }
-  .modal-box { background: var(--white); border-radius: 20px; padding: 28px; width: 100%; max-width: 420px; }
-  .modal-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.15rem; margin-bottom: 18px; color: var(--black); }
-  .modal-field { margin-bottom: 14px; }
-  .modal-field label { display: block; font-size: 0.75rem; font-weight: 500; color: var(--gray); margin-bottom: 6px; }
-  .modal-field input, .modal-field select { width: 100%; padding: 10px 14px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 10px; font-size: 0.9rem; font-family: 'DM Sans', sans-serif; background: var(--gray-light); color: var(--charcoal); outline: none; transition: border-color 0.2s; }
-  .modal-field input:focus, .modal-field select:focus { border-color: var(--pink); background: var(--white); }
-  .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
-  .modal-save { flex: 1; padding: 12px; background: var(--pink); color: var(--white); border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; }
-  .modal-cancel { padding: 12px 20px; background: transparent; color: var(--gray); border: 1.5px solid rgba(0,0,0,0.12); border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; cursor: pointer; }
+  .days-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 6px; }
+  .day-btn { background: var(--white); border: 1.5px solid rgba(0,0,0,0.09); border-radius: 12px; padding: 14px 8px; text-align: center; cursor: pointer; transition: all 0.18s; font-family: 'DM Sans', sans-serif; }
+  .day-btn:hover { border-color: var(--pink); box-shadow: 0 3px 14px rgba(255,31,122,0.12); transform: translateY(-2px); }
+  .day-btn.completed { border-color: var(--pink); background: var(--pink-pale); }
+  .day-btn .dn { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.3rem; color: var(--pink); line-height: 1; }
+  .day-btn .dt { font-size: 0.65rem; color: var(--gray); margin-top: 4px; line-height: 1.3; }
+  .overall-progress { background: var(--gray-light); border-radius: 14px; padding: 20px 24px; margin-top: 24px; }
+  .overall-progress h3 { font-size: 0.8rem; font-weight: 500; color: var(--gray); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .big-progress { display: flex; align-items: center; gap: 16px; }
+  .big-progress-bar { flex: 1; height: 8px; background: rgba(0,0,0,0.08); border-radius: 100px; overflow: hidden; }
+  .big-progress-fill { height: 100%; background: linear-gradient(90deg, var(--pink), var(--pink-light)); border-radius: 100px; transition: width 0.6s ease; }
+  .big-progress-pct { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem; color: var(--pink); white-space: nowrap; }
   .ai-generator { background: var(--white); border: 1.5px solid rgba(255,31,122,0.18); border-radius: 16px; padding: 26px; margin-bottom: 28px; animation: fadeUp 0.6s ease 0.38s both; }
   .ai-gen-header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
   .ai-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--pink-pale); color: var(--pink); font-size: 0.67rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; }
@@ -169,69 +141,10 @@
   .ai-nudge-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
   .ai-nudge-text { font-size: 0.82rem; color: var(--white); font-weight: 500; line-height: 1.4; }
   .ai-nudge-sub { font-size: 0.73rem; color: rgba(255,255,255,0.55); margin-top: 3px; }
-  .status-select { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; font-weight: 500; padding: 3px 8px; border-radius: 100px; border: none; cursor: pointer; outline: none; flex-shrink: 0; appearance: none; -webkit-appearance: none; }
-  .status-select.badge-sent { background: var(--pink-pale); color: var(--pink); }
-  .status-select.badge-replied { background: #E1F5EE; color: #0F6E56; }
-  .status-select.badge-call { background: #FAEEDA; color: #854F0B; }
-  .status-select.badge-won { background: var(--pink); color: var(--white); }
   .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
   .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
   @keyframes blink { 0%,80%,100%{opacity:0} 40%{opacity:1} }
-  .week-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; color: var(--pink); margin: 28px 0 12px; display: flex; align-items: center; gap: 8px; }
-  .week-label::after { content: ''; flex: 1; height: 1px; background: var(--pink); opacity: 0.25; }
-  .days-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 6px; }
-  .day-btn { background: var(--white); border: 1.5px solid rgba(0,0,0,0.09); border-radius: 12px; padding: 14px 8px; text-align: center; cursor: pointer; transition: all 0.18s; font-family: 'DM Sans', sans-serif; }
-  .day-btn:hover { border-color: var(--pink); box-shadow: 0 3px 14px rgba(255,31,122,0.12); transform: translateY(-2px); }
-  .day-btn.completed { border-color: var(--pink); background: var(--pink-pale); }
-  .day-btn .dn { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.3rem; color: var(--pink); line-height: 1; }
-  .day-btn .dt { font-size: 0.65rem; color: var(--gray); margin-top: 4px; line-height: 1.3; }
-  .overall-progress { background: var(--gray-light); border-radius: 14px; padding: 20px 24px; margin-top: 24px; }
-  .overall-progress h3 { font-size: 0.8rem; font-weight: 500; color: var(--gray); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
-  .big-progress { display: flex; align-items: center; gap: 16px; }
-  .big-progress-bar { flex: 1; height: 8px; background: rgba(0,0,0,0.08); border-radius: 100px; overflow: hidden; }
-  .big-progress-fill { height: 100%; background: linear-gradient(90deg, var(--pink), var(--pink-light)); border-radius: 100px; transition: width 0.6s ease; }
-  .big-progress-pct { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem; color: var(--pink); white-space: nowrap; }
-  .bonus-section { background: var(--black); border-radius: 20px; padding: 28px 32px; margin-top: 28px; display: flex; align-items: center; gap: 20px; position: relative; overflow: hidden; }
-  .bonus-section::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: var(--pink); border-radius: 50%; opacity: 0.15; filter: blur(40px); }
-  .bonus-badge { background: var(--pink); color: var(--white); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; align-self: flex-start; margin-top: 4px; }
-  .bonus-section h3 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem; color: var(--white); margin-bottom: 6px; position: relative; z-index: 1; }
-  .bonus-section p { color: rgba(255,255,255,0.6); font-size: 0.88rem; line-height: 1.55; margin-bottom: 14px; position: relative; z-index: 1; }
-  .bonus-body { position: relative; z-index: 1; }
-  .tab-nav { display: flex; gap: 8px; }
-  .tab-btn { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; padding: 7px 16px; border-radius: 100px; border: none; cursor: pointer; transition: all 0.2s; }
-  .tab-black { background: var(--black); color: var(--white); }
-  .tab-black:hover { background: var(--charcoal); }
-  .tab-black.tab-inactive { background: transparent; color: var(--gray); border: 1.5px solid rgba(0,0,0,0.12); }
-  .tab-pink { background: var(--pink); color: var(--white); }
-  .tab-pink:hover { background: #e0156a; }
-  .tab-pink.tab-inactive { background: transparent; color: var(--pink); border: 1.5px solid rgba(255,31,122,0.35); }
-  .pipeline-cta { display: flex; align-items: center; justify-content: space-between; background: var(--pink-pale); border: 1.5px solid rgba(255,31,122,0.2); border-radius: 14px; padding: 16px 20px; margin-bottom: 28px; gap: 14px; animation: fadeUp 0.6s ease 0.38s both; }
-  .pipeline-cta-text { font-size: 0.88rem; color: var(--charcoal); line-height: 1.45; }
-  .pipeline-cta-text strong { color: var(--pink); display: block; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; }
-  .btn-pipeline { background: var(--pink); color: var(--white); padding: 9px 18px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500; border: none; cursor: pointer; white-space: nowrap; transition: all 0.2s; flex-shrink: 0; }
-  .btn-pipeline:hover { background: #e0156a; transform: translateY(-1px); }
-  @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-  @media (max-width: 580px) {
-    .page { padding: 24px 16px 60px; }
-    .hero { padding: 30px 22px; }
-    .home-hero { padding: 36px 24px; }
-    .card-grid { grid-template-columns: 1fr; }
-    .days-grid { grid-template-columns: repeat(3, 1fr); }
-    .bonus-section { flex-direction: column; gap: 14px; }
-    .tracker-stats { grid-template-columns: repeat(2, 1fr); }
-    .ai-row { grid-template-columns: 1fr; }
-    .ai-actions { grid-template-columns: 1fr 1fr; }
-    .ai-variants { grid-template-columns: 1fr; }
-    .nav-buttons { justify-content: center; }
-  }
 
-  .sticky-banner { position: fixed; bottom: 0; left: 0; right: 0; background: var(--black); z-index: 200; padding: 14px 20px; display: flex; align-items: center; justify-content: center; gap: 16px; box-shadow: 0 -4px 24px rgba(0,0,0,0.15); }
-  .sticky-banner-text { color: var(--white); font-size: 0.88rem; font-weight: 500; }
-  .sticky-banner-text s { color: var(--gray); font-weight: 400; }
-  .sticky-banner-text strong { color: var(--pink-light); }
-  .sticky-banner .btn-primary { flex-shrink: 0; font-size: 0.82rem; padding: 10px 20px; }
-  .preview-pill { background: var(--pink-pale); color: var(--pink); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; }
   .unlock-cta { background: linear-gradient(135deg, var(--black) 0%, #1a1a2e 100%); border-radius: 20px; padding: 40px 36px; margin-top: 36px; text-align: center; position: relative; overflow: hidden; animation: fadeUp 0.6s ease 0.3s both; }
   .unlock-cta::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; background: var(--pink); border-radius: 50%; opacity: 0.15; filter: blur(50px); }
   .unlock-cta::after { content: ''; position: absolute; bottom: -40px; left: -20px; width: 160px; height: 160px; background: var(--pink-light); border-radius: 50%; opacity: 0.1; filter: blur(40px); }
@@ -248,8 +161,58 @@
   .footer-note { text-align: center; font-size: 0.73rem; color: var(--gray); margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.07); animation: fadeUp 0.5s ease 0.5s both; }
   .footer-note a { color: var(--pink); text-decoration: none; font-weight: 500; }
   .footer-note a:hover { text-decoration: underline; }
+
+  .sticky-banner { position: fixed; bottom: 0; left: 0; right: 0; background: var(--black); z-index: 200; padding: 14px 20px; display: flex; align-items: center; justify-content: center; gap: 16px; box-shadow: 0 -4px 24px rgba(0,0,0,0.15); }
+  .sticky-banner-text { color: var(--white); font-size: 0.88rem; font-weight: 500; }
+  .sticky-banner-text s { color: var(--gray); font-weight: 400; }
+  .sticky-banner-text strong { color: var(--pink-light); }
+  .sticky-banner .btn-primary { flex-shrink: 0; font-size: 0.82rem; padding: 10px 20px; }
+  .preview-pill { background: var(--pink-pale); color: var(--pink); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; }
   body { padding-bottom: 80px; }
+
+  /* ===== GATE SCREEN ===== */
+  .gate-screen { animation: fadeUp 0.6s ease both; text-align: center; }
+  .gate-hero { background: var(--black); border-radius: 24px; padding: 52px 44px 40px; position: relative; overflow: hidden; margin-bottom: 32px; }
+  .gate-hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; background: var(--pink); border-radius: 50%; opacity: 0.15; filter: blur(60px); }
+  .gate-hero::after { content: ''; position: absolute; bottom: -60px; left: -40px; width: 200px; height: 200px; background: var(--pink); border-radius: 50%; opacity: 0.1; filter: blur(40px); }
+  .gate-hero h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.15; margin-bottom: 16px; position: relative; z-index: 1; }
+  .gate-hero h1 em { font-style: italic; color: var(--pink-light); }
+  .gate-hero p { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.65; position: relative; z-index: 1; max-width: 500px; margin: 0 auto; }
+  .gate-form-wrap { max-width: 440px; margin: 0 auto 32px; }
+  .gate-features { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 32px; }
+  .gate-feat { background: var(--white); border: 1.5px solid rgba(0,0,0,0.08); border-radius: 14px; padding: 20px 16px; text-align: center; }
+  .gate-feat-icon { font-size: 1.6rem; margin-bottom: 8px; }
+  .gate-feat-title { font-size: 0.78rem; font-weight: 500; color: var(--black); margin-bottom: 4px; }
+  .gate-feat-desc { font-size: 0.72rem; color: var(--gray); line-height: 1.4; }
+
+  /* ===== EXPIRED SCREEN ===== */
+  .expired-screen { animation: fadeUp 0.6s ease both; text-align: center; min-height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .expired-icon { font-size: 3.5rem; margin-bottom: 20px; opacity: 0.8; }
+  .expired-screen h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--black); margin-bottom: 14px; }
+  .expired-screen h1 em { color: var(--pink); font-style: italic; }
+  .expired-screen > p { color: var(--gray); font-size: 0.95rem; line-height: 1.65; max-width: 460px; margin: 0 auto 24px; }
+
+  /* ===== COUNTDOWN TIMER ===== */
+  .countdown-bar { background: linear-gradient(90deg, var(--pink), var(--pink-light)); border-radius: 14px; padding: 14px 22px; margin-bottom: 28px; display: flex; align-items: center; justify-content: center; gap: 10px; animation: fadeDown 0.5s ease 0.1s both; }
+  .countdown-bar-icon { font-size: 1.1rem; }
+  .countdown-bar-text { color: var(--white); font-size: 0.85rem; font-weight: 500; }
+  .countdown-bar-text strong { font-weight: 700; }
+
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
   @media (max-width: 580px) {
+    .page { padding: 24px 16px 60px; }
+    .hero { padding: 30px 22px; }
+    .home-hero { padding: 36px 24px; }
+    .gate-hero { padding: 36px 24px 30px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .days-grid { grid-template-columns: repeat(3, 1fr); }
+    .gate-features { grid-template-columns: 1fr; }
+    .ai-row { grid-template-columns: 1fr; }
+    .ai-actions { grid-template-columns: 1fr 1fr; }
+    .ai-variants { grid-template-columns: 1fr; }
+    .nav-buttons { justify-content: center; }
     .sticky-banner { flex-direction: column; gap: 8px; padding: 12px 16px; }
     .sticky-banner-text { font-size: 0.8rem; text-align: center; }
     .unlock-cta { padding: 32px 24px; }
@@ -257,19 +220,227 @@
 </style>
 </head>
 <body>
+
 <div class="page">
   <div class="topbar">
     <a class="logo" onclick="showHome()">Virtu<span>easy</span></a>
-    <div class="preview-pill">Free Preview</div>
+    <div class="preview-pill" id="topPill">Free Preview</div>
   </div>
-  <div id="homeScreen"></div>
+  <div id="gateScreen" style="display:none;"></div>
+  <div id="expiredScreen" style="display:none;"></div>
+  <div id="homeScreen" style="display:none;"></div>
   <div id="dayScreen" style="display:none;"></div>
 </div>
-<div class="sticky-banner">
+
+<div class="sticky-banner" id="stickyBanner" style="display:none;">
   <div class="sticky-banner-text">Get all 30 days + AI tools: <s>$27</s> <strong>$14</strong></div>
   <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary">Unlock Full Blueprint</a>
 </div>
+
+<!-- MailerLite JS -->
+<style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1775464");</style>
+<style type="text/css">
+  .ml-form-embedSubmitLoad { display: inline-block; width: 20px; height: 20px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+  .ml-form-embedSubmitLoad:after { content: " "; display: block; width: 11px; height: 11px; margin: 1px; border-radius: 50%; border: 4px solid #fff; border-color: #ffffff #ffffff #ffffff transparent; animation: ml-form-embedSubmitLoad 1.2s linear infinite; }
+  @keyframes ml-form-embedSubmitLoad { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  #mlb2-39679611.ml-form-embedContainer { box-sizing: border-box; display: table; margin: 0 auto; position: static; width: 100% !important; }
+  #mlb2-39679611.ml-form-embedContainer h4, #mlb2-39679611.ml-form-embedContainer p, #mlb2-39679611.ml-form-embedContainer span, #mlb2-39679611.ml-form-embedContainer button { text-transform: none !important; letter-spacing: normal !important; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper { background-color: #f6f6f6; border-width: 0px; border-color: transparent; border-radius: 4px; border-style: solid; box-sizing: border-box; display: inline-block !important; margin: 0; padding: 0; position: relative; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper.embedForm { max-width: 400px; width: 100%; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-align-center { text-align: center; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody, #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody { padding: 20px 20px 0 20px; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent, #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent { text-align: left; margin: 0 0 20px 0; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4, #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 { color: #db0fa2; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 30px; font-weight: 700; margin: 0 0 10px 0; text-align: left; word-break: break-word; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p, #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p { color: #000000; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; margin: 0 0 10px 0; text-align: left; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ul, #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol { color: #000000; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 14px; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p a { color: #000000; text-decoration: underline; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group { text-align: left!important; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group label { margin-bottom: 5px; color: #333333; font-size: 14px; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-weight: bold; display: inline-block; line-height: 20px; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p:last-child { margin: 0; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody form { margin: 0; width: 100%; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent, #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow { margin: 0 0 20px 0; width: 100%; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow { margin: 0 0 10px 0; width: 100%; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-last-item { margin: 0; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input { background-color: #ffffff !important; color: #333333 !important; border-color: #cccccc; border-radius: 4px !important; border-style: solid !important; border-width: 1px !important; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 14px !important; height: auto; line-height: 21px !important; margin-bottom: 0; margin-top: 0; margin-left: 0; margin-right: 0; padding: 10px 10px !important; width: 100% !important; box-sizing: border-box !important; max-width: 100% !important; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit { margin: 0 0 20px 0; float: left; width: 100%; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button { background-color: #d40e9d !important; border: none !important; border-radius: 4px !important; box-shadow: none !important; color: #ffffff !important; cursor: pointer; font-family: 'Open Sans', Arial, Helvetica, sans-serif !important; font-size: 14px !important; font-weight: 700 !important; line-height: 21px !important; height: auto; padding: 10px !important; width: 100% !important; box-sizing: border-box !important; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.loading { display: none; }
+  #mlb2-39679611.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover { background-color: #333333 !important; }
+  .ml-error input { border-color: red!important; }
+  @media only screen and (max-width: 400px) { .ml-form-embedWrapper.embedDefault, .ml-form-embedWrapper.embedPopup { width: 100%!important; } }
+</style>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+<script>fetch("https://assets.mailerlite.com/jsonp/2199748/forms/184286829174851310/takel");</script>
+
 <script>
+/* =============================================
+   ACCESS CONTROL
+   ============================================= */
+const ACCESS_KEY = 'va_preview_access';
+const EXPIRY_KEY = 'va_preview_expiry';
+const EXPIRED_KEY = 'va_preview_expired_permanent';
+const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
+
+function getAccessState() {
+  if (localStorage.getItem(EXPIRED_KEY) === 'true') return 'expired';
+  const accessGranted = localStorage.getItem(ACCESS_KEY);
+  if (!accessGranted) return 'gate';
+  const expiry = parseInt(localStorage.getItem(EXPIRY_KEY) || '0', 10);
+  if (Date.now() > expiry) {
+    localStorage.setItem(EXPIRED_KEY, 'true');
+    return 'expired';
+  }
+  return 'active';
+}
+
+function grantAccess() {
+  localStorage.setItem(ACCESS_KEY, 'true');
+  localStorage.setItem(EXPIRY_KEY, String(Date.now() + SEVEN_DAYS_MS));
+}
+
+function getTimeRemaining() {
+  const expiry = parseInt(localStorage.getItem(EXPIRY_KEY) || '0', 10);
+  const diff = expiry - Date.now();
+  if (diff <= 0) return null;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  return { days, hours, minutes };
+}
+
+/* MailerLite success callback -- grants access and routes */
+function ml_webform_success_39679611() {
+  grantAccess();
+  routeUser();
+}
+
+/* =============================================
+   ROUTING
+   ============================================= */
+function routeUser() {
+  document.getElementById('gateScreen').style.display = 'none';
+  document.getElementById('expiredScreen').style.display = 'none';
+  document.getElementById('homeScreen').style.display = 'none';
+  document.getElementById('dayScreen').style.display = 'none';
+  document.getElementById('stickyBanner').style.display = 'none';
+
+  const state = getAccessState();
+  if (state === 'gate') {
+    document.getElementById('topPill').textContent = 'Free Preview';
+    renderGate();
+  } else if (state === 'expired') {
+    document.getElementById('topPill').textContent = 'Preview Expired';
+    renderExpired();
+  } else {
+    document.getElementById('topPill').textContent = 'Free Preview';
+    document.getElementById('stickyBanner').style.display = '';
+    showHome();
+  }
+}
+
+/* =============================================
+   GATE SCREEN
+   ============================================= */
+function renderGate() {
+  document.getElementById('gateScreen').style.display = '';
+  document.getElementById('gateScreen').innerHTML = `
+    <div class="gate-screen">
+      <div class="gate-hero">
+        <h1>Try The VA Blueprint<br><em>Before You Buy</em></h1>
+        <p>Get instant access to 3 full interactive days, including AI-powered tools. No credit card needed.</p>
+      </div>
+      <div class="gate-features">
+        <div class="gate-feat"><div class="gate-feat-icon">\u{1F4CB}</div><div class="gate-feat-title">3 Full Days</div><div class="gate-feat-desc">Real lessons from the 30-day system, fully interactive</div></div>
+        <div class="gate-feat"><div class="gate-feat-icon">\u{1F916}</div><div class="gate-feat-title">AI Tools</div><div class="gate-feat-desc">Generate discovery call scripts with the AI engine</div></div>
+        <div class="gate-feat"><div class="gate-feat-icon">\u{26A1}</div><div class="gate-feat-title">Instant Access</div><div class="gate-feat-desc">Start right now, straight in your browser</div></div>
+      </div>
+      <div class="gate-form-wrap">
+        <div id="mlb2-39679611" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-39679611">
+          <div class="ml-form-align-center">
+            <div class="ml-form-embedWrapper embedForm">
+              <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                <div class="ml-form-embedContent" style="">
+                  <h4>Get instant, in-browser access to a free preview of the VA Blueprint</h4>
+                  <p><br></p>
+                  <p>An interactive system that helps you land your first high-paying client in 30 days, no experience required.</p>
+                  <p>IN THIS PREVIEW: </p>
+                  <ul><li>3 full days of the Blueprint (my personal favorite lessons)</li></ul>
+                  <ul><li>How to handle objections and create content that brings clients to YOU</li></ul>
+                  <ul><li>Unrestricted access to my AI Discovery Call Question Generator so you can impress clients from day one</li></ul>
+                  <p><br></p>
+                </div>
+                <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2199748/forms/184286829174851310/subscribe" data-code="" method="post" target="_blank">
+                  <div class="ml-form-formContent">
+                    <div class="ml-form-fieldRow ml-last-item">
+                      <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                        <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+                      </div>
+                    </div>
+                  </div>
+                  <input type="hidden" name="ml-submit" value="1">
+                  <div class="ml-form-embedSubmit">
+                    <button type="submit" class="primary">TAKE ME TO THE PREVIEW</button>
+                    <button disabled="disabled" style="display: none;" type="button" class="loading">
+                      <div class="ml-form-embedSubmitLoad"></div>
+                      <span class="sr-only">Loading...</span>
+                    </button>
+                  </div>
+                  <input type="hidden" name="anticsrf" value="true">
+                </form>
+              </div>
+              <div class="ml-form-successBody row-success" style="display: none">
+                <div class="ml-form-successContent">
+                  <h4>Thank you!</h4>
+                  <p>You have successfully joined our subscriber list.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-note">Owned and operated by <a href="https://messickmarketing.com/" target="_blank">Messick Marketing</a></div>
+    </div>`;
+}
+
+/* =============================================
+   EXPIRED SCREEN
+   ============================================= */
+function renderExpired() {
+  document.getElementById('expiredScreen').style.display = '';
+  document.getElementById('expiredScreen').innerHTML = `
+    <div class="expired-screen">
+      <div class="expired-icon">\u{1F512}</div>
+      <h1>Your preview has <em>expired</em></h1>
+      <p>Your 7-day free preview window has closed. The full VA Blueprint gives you all 30 days, AI-powered tools, a client pipeline tracker, and daily journal prompts.</p>
+      <div style="margin-bottom:16px;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px;">
+          <span style="font-size:1.1rem;color:var(--gray);text-decoration:line-through;">$27</span>
+          <span style="font-family:'Playfair Display',serif;font-weight:900;font-size:2.2rem;color:var(--pink);">$14</span>
+        </div>
+        <div style="font-size:0.78rem;color:var(--gray);margin-bottom:20px;">Use code PREVIEW30 at checkout</div>
+      </div>
+      <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary" style="font-size:1rem;padding:15px 36px;">Get the Full Blueprint</a>
+      <div class="footer-note" style="margin-top:40px;">Owned and operated by <a href="https://messickmarketing.com/" target="_blank">Messick Marketing</a></div>
+    </div>`;
+}
+
+/* =============================================
+   COUNTDOWN TIMER
+   ============================================= */
+function renderCountdown() {
+  const r = getTimeRemaining();
+  if (!r) return '';
+  let text = '';
+  if (r.days > 0) text = `${r.days} day${r.days !== 1 ? 's' : ''}, ${r.hours}h remaining`;
+  else if (r.hours > 0) text = `${r.hours}h ${r.minutes}m remaining`;
+  else text = `${r.minutes} minute${r.minutes !== 1 ? 's' : ''} remaining`;
+  return `<div class="countdown-bar"><span class="countdown-bar-icon">\u{23F3}</span><span class="countdown-bar-text">Preview access: <strong>${text}</strong></span></div>`;
+}
+
+/* =============================================
+   PREVIEW CONTENT
+   ============================================= */
 const PROXY_URL = 'https://workbook-theta.vercel.app/api/generate';
 const DAYS = [
   { title:"Create Content That Attracts Clients", titleEm:"That Attracts Clients", focus:"You don\u2019t need a huge audience. You need the right 10 people to see the right post. Let\u2019s create it.", proTip:"The posts that get VAs hired are never the ones that say \u2018I\u2019m available for clients.\u2019 They\u2019re the ones that demonstrate expertise \u2014 a behind-the-scenes of a system you built, a mistake you see businesses make, a result you helped someone get. Show the work. Let the offer be implied.", time:"30", win:"One piece of content published today that speaks directly to your niche\u2019s pain point.", tasks:[{text:"Write a post that starts with a bold statement about your niche\u2019s biggest problem",tag:"15 min"},{text:"Include a specific insight, tip, or perspective \u2014 not generic advice",tag:"Edit"},{text:"End with a soft CTA: a question, a DM invite, or a comment prompt",tag:"5 min"},{text:"Post it on LinkedIn AND the Facebook groups you joined yesterday",tag:"Publish"}], prompt:"What\u2019s one thing I know about my niche that most people get wrong? What would I tell them if they were sitting right across from me?", affirmation:"\"Content doesn\u2019t build audiences. <span>It builds trust. One right person reading the right post changes everything.</span>\"" },
@@ -289,9 +460,14 @@ function getCompletedDays() { return JSON.parse(localStorage.getItem('va_preview
 function markDayComplete(i) { const c = getCompletedDays(); if (!c.includes(i)) { c.push(i); localStorage.setItem('va_preview_completed', JSON.stringify(c)); } }
 
 function showHome() {
+  const state = getAccessState();
+  if (state !== 'active') { routeUser(); return; }
   currentDay = null;
+  document.getElementById('gateScreen').style.display = 'none';
+  document.getElementById('expiredScreen').style.display = 'none';
   document.getElementById('homeScreen').style.display = '';
   document.getElementById('dayScreen').style.display = 'none';
+  document.getElementById('stickyBanner').style.display = '';
   renderHome();
   window.scrollTo(0,0);
 }
@@ -301,6 +477,7 @@ function renderHome() {
   const pct = Math.round((completed.length / 3) * 100);
   const shortTitles = DAYS.map(d => { const w = d.title.split(' '); return w.slice(0,3).join(' ') + (w.length > 3 ? '\u2026' : ''); });
   let html = `<div class="home-screen">
+  ${renderCountdown()}
   <div class="home-hero"><h1>Free Preview:<br><em>Days 10\u201312</em></h1><p>Try 3 real days from The VA Blueprint. Fully interactive. See what the full 30-day system feels like.</p></div>
   <div class="overall-progress" style="margin-top:0;margin-bottom:28px;"><h3>Preview Progress</h3><div class="big-progress"><div class="big-progress-bar"><div class="big-progress-fill" style="width:${pct}%"></div></div><div class="big-progress-pct">${completed.length}/3 days</div></div></div>
   <div class="days-grid">`;
@@ -323,6 +500,8 @@ function renderHome() {
 }
 
 function showDay(index) {
+  const state = getAccessState();
+  if (state !== 'active') { routeUser(); return; }
   currentDay = index;
   document.getElementById('homeScreen').style.display = 'none';
   document.getElementById('dayScreen').style.display = '';
@@ -340,19 +519,17 @@ function renderDay(index) {
   const heroTitle = d.titleEm ? d.title.replace(d.titleEm, '<em>'+d.titleEm+'</em>') : d.title;
   const isFirst = index === 0, isLast = index === 2;
   const timeDisplay = ['All day','Ongoing','However long it takes'].includes(d.time) ? d.time : d.time+' min';
-
   const tasksHtml = d.tasks.map((t,i) => `<li class="task-item ${savedTasks[i]?'done':''}" onclick="toggleTask(this,${index},${i})">
     <div class="task-check"><svg viewBox='0 0 13 10' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1.5 5L5 8.5L11.5 1.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg></div>
     <div class="task-text">${t.text} <span class="task-tag">${t.tag}</span></div>
   </li>`).join('');
-
   const aiHtml = d.aiGenerator ? renderAIGenerator(d.aiGenerator, index) : '';
-
   document.getElementById('dayScreen').innerHTML = `
+  ${renderCountdown()}
   <div style="animation:fadeDown 0.4s ease both;"><button class="btn btn-ghost" onclick="showHome()" style="margin-bottom:28px;font-size:0.82rem;">\u2190 All Days</button></div>
   <div class="progress-bar-wrap"><div class="progress-bar-label"><span>Preview Progress</span><span>Day ${index+1} of 3</span></div><div class="progress-bar-track"><div class="progress-bar-fill" style="width:${progressPct}%"></div></div></div>
   <div class="hero"><div class="day-label">Day ${index+10} of 30</div><h1>${heroTitle}</h1><p>${d.focus}</p></div>
-  <div class="pro-tip-banner"><div class="pro-tip-icon">\ud83d\udca1</div><div><strong>Pro tip</strong><p>${d.proTip}</p></div></div>
+  <div class="pro-tip-banner"><div class="pro-tip-icon">\u{1F4A1}</div><div><strong>Pro tip</strong><p>${d.proTip}</p></div></div>
   <div class="card-grid">
     <div class="card"><div class="card-number">${d.time}</div><h3>Time Required</h3><p>${timeDisplay} of focused work. Progress over perfection.</p></div>
     <div class="card"><div class="card-number">1</div><h3>Big Win Today</h3><p>${d.win}</p></div>
@@ -370,6 +547,9 @@ function renderDay(index) {
   <div class="footer-note">Owned and operated by <a href="https://messickmarketing.com/" target="_blank">Messick Marketing</a></div>`;
 }
 
+/* =============================================
+   AI GENERATOR
+   ============================================= */
 function renderAIGenerator(gen, dayIndex) {
   const rem = AI_MAX - aiGenerations;
   const dots = Array.from({length:5},(_,i) => `<div class="ai-ldot ${i < rem?'':'empty'}"></div>`).join('');
@@ -401,7 +581,7 @@ function renderAIGenerator(gen, dayIndex) {
       </div>
       <div class="ai-variants-label">2 more variations</div>
       <div class="ai-variants" id="aiVariants${dayIndex}"></div>
-      <div class="ai-nudge" id="aiNudge${dayIndex}" style="display:none;"><div class="ai-nudge-icon">\ud83d\udca1</div><div><div class="ai-nudge-text">${gen.nudge.text}</div><div class="ai-nudge-sub">${gen.nudge.sub}</div></div></div>
+      <div class="ai-nudge" id="aiNudge${dayIndex}" style="display:none;"><div class="ai-nudge-icon">\u{1F4A1}</div><div><div class="ai-nudge-text">${gen.nudge.text}</div><div class="ai-nudge-sub">${gen.nudge.sub}</div></div></div>
     </div>
     <div class="ai-limit"><span class="ai-limit-text" id="aiLimitText${dayIndex}">${rem} generation${rem!==1?'s':''} remaining (preview)</span><div class="ai-limit-dots" id="aiLimitDots${dayIndex}">${dots}</div></div>
   </div>`;
@@ -507,6 +687,9 @@ function aiCopy(dayIndex) {
   });
 }
 
+/* =============================================
+   TASKS / JOURNAL / DOWNLOAD
+   ============================================= */
 function toggleTask(item, dayIndex, taskIndex) {
   item.classList.toggle('done');
   const items = document.querySelectorAll('#taskList .task-item');
@@ -523,19 +706,29 @@ function downloadNotes(dayIndex) {
   const d = DAYS[dayIndex];
   const tasks = [...document.querySelectorAll('#taskList .task-item')].map(t => `${t.classList.contains('done')?'[x]':'[ ]'} ${t.querySelector('.task-text').textContent.trim()}`).join('\n');
   const journal = document.getElementById('journalEntry').value || '(no notes written yet)';
-  const content = `THE VA BLUEPRINT (PREVIEW) \u2014 Day ${dayIndex+10} Notes\n${'='.repeat(48)}\n\nDAY TITLE: ${d.title}\n\nTASKS:\n${tasks}\n\nJOURNAL PROMPT:\n${d.prompt}\n\nMY ANSWER:\n${journal}\n\nDate saved: ${new Date().toLocaleDateString()}\n\nGet the full 30-day blueprint at $13 with code PREVIEW30: https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05`;
+  const content = `THE VA BLUEPRINT (PREVIEW) \u2014 Day ${dayIndex+10} Notes\n${'='.repeat(48)}\n\nDAY TITLE: ${d.title}\n\nTASKS:\n${tasks}\n\nJOURNAL PROMPT:\n${d.prompt}\n\nMY ANSWER:\n${journal}\n\nDate saved: ${new Date().toLocaleDateString()}\n\nGet the full 30-day blueprint at $14 with code PREVIEW30: https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05`;
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([content],{type:'text/plain'}));
   a.download = `VA-Blueprint-Day${dayIndex+10}-Notes.txt`;
   a.click();
 }
 
-showHome();
+/* Auto-check expiry every 60s */
+setInterval(() => {
+  if (getAccessState() === 'expired' && (document.getElementById('homeScreen').style.display !== 'none' || document.getElementById('dayScreen').style.display !== 'none')) {
+    routeUser();
+  }
+}, 60000);
+
+/* URL param unlock (from MailerLite redirect back) */
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has('unlocked') || urlParams.has('ml_success')) {
+  if (getAccessState() === 'gate') grantAccess();
+}
+
+/* INIT */
+routeUser();
 </script>
-  <script>
-    fbq('trackCustom', 'ViewedMiniCourse');
-  </script>
-</body>
-</html>
+<script>try { fbq('trackCustom', 'ViewedMiniCourse'); } catch(e) {}</script>
 </body>
 </html>
