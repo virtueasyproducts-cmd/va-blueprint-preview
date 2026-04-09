@@ -212,6 +212,36 @@ fbq('track', 'PageView');
   .countdown-bar-text { color: var(--white); font-size: 0.85rem; font-weight: 500; }
   .countdown-bar-text strong { font-weight: 700; }
 
+  /* ===== CELEBRATION MODAL ===== */
+  .celebrate-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 9998; opacity: 0; transition: opacity 0.4s ease; pointer-events: none; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+  .celebrate-overlay.visible { opacity: 1; pointer-events: auto; }
+  .celebrate-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); z-index: 9999; background: var(--white); border-radius: 24px; padding: 44px 36px 36px; max-width: 420px; width: calc(100% - 32px); text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,0.3); opacity: 0; transition: all 0.5s cubic-bezier(0.34,1.56,0.64,1); pointer-events: none; }
+  .celebrate-modal.visible { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
+  .celebrate-trophy { font-size: 3.5rem; margin-bottom: 16px; animation: trophyBounce 0.6s ease 0.3s both; }
+  @keyframes trophyBounce { 0%{transform:scale(0) rotate(-15deg);opacity:0} 50%{transform:scale(1.2) rotate(5deg);opacity:1} 100%{transform:scale(1) rotate(0deg);opacity:1} }
+  .celebrate-modal h2 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem; color: var(--black); margin-bottom: 8px; line-height: 1.2; }
+  .celebrate-modal h2 em { font-style: italic; color: var(--pink); }
+  .celebrate-modal .celebrate-sub { font-size: 0.92rem; color: var(--gray); line-height: 1.6; margin-bottom: 24px; }
+  .celebrate-stats { display: flex; justify-content: center; gap: 24px; margin-bottom: 24px; }
+  .celebrate-stat { text-align: center; }
+  .celebrate-stat-num { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.8rem; color: var(--pink); line-height: 1; }
+  .celebrate-stat-label { font-size: 0.7rem; color: var(--gray); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .celebrate-divider { height: 1px; background: rgba(0,0,0,0.08); margin-bottom: 24px; }
+  .celebrate-offer { background: var(--black); border-radius: 16px; padding: 24px; margin-bottom: 20px; position: relative; overflow: hidden; }
+  .celebrate-offer::before { content: ''; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: var(--pink); border-radius: 50%; opacity: 0.15; filter: blur(30px); }
+  .celebrate-offer-tag { display: inline-block; background: var(--pink); color: var(--white); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-bottom: 12px; position: relative; z-index: 1; }
+  .celebrate-offer h3 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem; color: var(--white); margin-bottom: 8px; position: relative; z-index: 1; }
+  .celebrate-offer .celebrate-price { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 4px; position: relative; z-index: 1; }
+  .celebrate-offer .celebrate-price s { font-size: 1rem; color: var(--gray); }
+  .celebrate-offer .celebrate-price strong { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 2rem; color: var(--pink-light); }
+  .celebrate-offer .celebrate-code { font-size: 0.78rem; color: rgba(255,255,255,0.5); position: relative; z-index: 1; }
+  .celebrate-offer .celebrate-code code { background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px; color: var(--pink-light); font-family: 'DM Sans', sans-serif; font-weight: 500; letter-spacing: 0.05em; }
+  .celebrate-cta { display: block; width: 100%; padding: 16px; background: var(--pink); color: var(--white); border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; text-align: center; box-shadow: 0 4px 20px rgba(255,31,122,0.3); }
+  .celebrate-cta:hover { background: #e0156a; transform: translateY(-1px); }
+  .celebrate-dismiss { background: none; border: none; font-size: 0.82rem; color: var(--gray); cursor: pointer; margin-top: 14px; font-family: 'DM Sans', sans-serif; transition: color 0.2s; }
+  .celebrate-dismiss:hover { color: var(--black); }
+  .confetti-canvas { position: fixed; inset: 0; z-index: 10000; pointer-events: none; }
+
   @keyframes fadeDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -230,14 +260,38 @@ fbq('track', 'PageView');
     .sticky-banner { flex-direction: column; gap: 8px; padding: 12px 16px; }
     .sticky-banner-text { font-size: 0.8rem; text-align: center; }
     .unlock-cta { padding: 32px 24px; }
+    .celebrate-modal { padding: 32px 24px 28px; }
+    .celebrate-stats { gap: 16px; }
   }
 </style>
 </head>
 <body>
 
+<div class="celebrate-overlay" id="celebrateOverlay"></div>
+<div class="celebrate-modal" id="celebrateModal">
+  <div class="celebrate-trophy">\u{1F3C6}</div>
+  <h2>You <em>crushed</em> it!</h2>
+  <p class="celebrate-sub">You just completed the entire preview. Most people don't finish what they start. You're not most people.</p>
+  <div class="celebrate-stats">
+    <div class="celebrate-stat"><div class="celebrate-stat-num">3</div><div class="celebrate-stat-label">Days completed</div></div>
+    <div class="celebrate-stat"><div class="celebrate-stat-num" id="celebTaskCount">0</div><div class="celebrate-stat-label">Tasks checked</div></div>
+    <div class="celebrate-stat"><div class="celebrate-stat-num">100%</div><div class="celebrate-stat-label">Preview done</div></div>
+  </div>
+  <div class="celebrate-divider"></div>
+  <div class="celebrate-offer">
+    <span class="celebrate-offer-tag">Preview-exclusive discount</span>
+    <h3>Unlock all 30 days</h3>
+    <div class="celebrate-price"><s>$27</s> <strong>$14</strong></div>
+    <div class="celebrate-code">Use code <code>PREVIEW30</code> at checkout</div>
+  </div>
+  <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="celebrate-cta">Get the Full Blueprint for $14 \u2192</a>
+  <button class="celebrate-dismiss" onclick="dismissCelebration()">I'll keep exploring the preview</button>
+</div>
+<canvas class="confetti-canvas" id="confettiCanvas"></canvas>
+
 <div class="page">
   <div class="topbar">
-    <a class="logo" onclick="showHome()">Virtu<span>easy</span></a>
+    <a class="logo" onclick="showHome()">VIRTU<span>EASY</span></a>
     <div class="preview-pill" id="topPill">Free Preview</div>
   </div>
   <div id="gateScreen" style="display:none;"></div>
@@ -289,6 +343,94 @@ fbq('track', 'PageView');
 
 <script>
 /* =============================================
+   CONFETTI ENGINE
+   ============================================= */
+function launchConfetti() {
+  const canvas = document.getElementById('confettiCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const colors = ['#FF1F7A','#FF6BAB','#FFD700','#00D4AA','#7B68EE','#FF8C42','#FF1F7A','#FFF0F6'];
+  const pieces = [];
+  for (let i = 0; i < 150; i++) {
+    pieces.push({
+      x: canvas.width * Math.random(),
+      y: -20 - Math.random() * canvas.height * 0.5,
+      w: 6 + Math.random() * 8,
+      h: 4 + Math.random() * 6,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vx: (Math.random() - 0.5) * 4,
+      vy: 2 + Math.random() * 4,
+      rotation: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 12,
+      opacity: 1,
+      shape: Math.random() > 0.5 ? 'rect' : 'circle'
+    });
+  }
+  let frame = 0;
+  const maxFrames = 240;
+  function animate() {
+    frame++;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let alive = false;
+    pieces.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.08;
+      p.vx *= 0.99;
+      p.rotation += p.rotSpeed;
+      if (frame > maxFrames * 0.6) p.opacity = Math.max(0, p.opacity - 0.015);
+      if (p.opacity <= 0 || p.y > canvas.height + 40) return;
+      alive = true;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation * Math.PI / 180);
+      ctx.globalAlpha = p.opacity;
+      ctx.fillStyle = p.color;
+      if (p.shape === 'circle') {
+        ctx.beginPath();
+        ctx.arc(0, 0, p.w / 2, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      }
+      ctx.restore();
+    });
+    if (alive && frame < maxFrames) requestAnimationFrame(animate);
+    else ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+  requestAnimationFrame(animate);
+}
+
+/* =============================================
+   CELEBRATION MODAL
+   ============================================= */
+const CELEBRATION_SHOWN_KEY = 'va_preview_celebrated';
+
+function showCelebration() {
+  if (localStorage.getItem(CELEBRATION_SHOWN_KEY) === 'true') return;
+  // Count total tasks completed
+  let totalTasks = 0;
+  for (let i = 0; i < 3; i++) {
+    const tasks = JSON.parse(localStorage.getItem('va_preview_day' + i + '_tasks') || '[]');
+    totalTasks += tasks.filter(Boolean).length;
+  }
+  document.getElementById('celebTaskCount').textContent = totalTasks;
+  document.getElementById('celebrateOverlay').classList.add('visible');
+  document.getElementById('celebrateModal').classList.add('visible');
+  localStorage.setItem(CELEBRATION_SHOWN_KEY, 'true');
+  setTimeout(launchConfetti, 200);
+  try { fbq('trackCustom', 'PreviewCompleted'); } catch(e) {}
+}
+
+function dismissCelebration() {
+  document.getElementById('celebrateOverlay').classList.remove('visible');
+  document.getElementById('celebrateModal').classList.remove('visible');
+}
+
+document.getElementById('celebrateOverlay').addEventListener('click', dismissCelebration);
+
+/* =============================================
    ACCESS CONTROL
    ============================================= */
 const ACCESS_KEY = 'va_preview_access';
@@ -323,7 +465,7 @@ function getTimeRemaining() {
   return { days, hours, minutes };
 }
 
-/* MailerLite success callback -- grants access and routes */
+/* MailerLite success callback */
 function ml_webform_success_39679611() {
   grantAccess();
   routeUser();
@@ -473,6 +615,11 @@ const AI_MAX = 5;
 function getCompletedDays() { return JSON.parse(localStorage.getItem('va_preview_completed') || '[]'); }
 function markDayComplete(i) { const c = getCompletedDays(); if (!c.includes(i)) { c.push(i); localStorage.setItem('va_preview_completed', JSON.stringify(c)); } }
 
+function checkAllComplete() {
+  const c = getCompletedDays();
+  return c.includes(0) && c.includes(1) && c.includes(2);
+}
+
 function showHome() {
   const state = getAccessState();
   if (state !== 'active') { routeUser(); return; }
@@ -484,6 +631,10 @@ function showHome() {
   document.getElementById('stickyBanner').style.display = '';
   renderHome();
   window.scrollTo(0,0);
+  // Check if all days complete and show celebration
+  if (checkAllComplete()) {
+    setTimeout(showCelebration, 600);
+  }
 }
 
 function renderHome() {
@@ -734,7 +885,7 @@ setInterval(() => {
   }
 }, 60000);
 
-/* URL param unlock (from MailerLite redirect back) */
+/* URL param unlock */
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.has('unlocked') || urlParams.has('ml_success')) {
   if (getAccessState() === 'gate') grantAccess();
