@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Meta Pixel -->
-<script>
+  <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -192,7 +191,7 @@ fbq('track', 'PageView');
   .gate-hero h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.15; margin-bottom: 16px; position: relative; z-index: 1; }
   .gate-hero h1 em { font-style: italic; color: var(--pink-light); }
   .gate-hero p { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.65; position: relative; z-index: 1; max-width: 500px; margin: 0 auto; }
-  .gate-form-wrap { max-width: 440px; margin: 0 auto 32px; }
+  .gate-form-wrap { max-width: 440px; margin: 0 auto 32px; position: relative; z-index: 2; }
   .gate-features { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 32px; }
   .gate-feat { background: var(--white); border: 1.5px solid rgba(0,0,0,0.08); border-radius: 14px; padding: 20px 16px; text-align: center; }
   .gate-feat-icon { font-size: 1.6rem; margin-bottom: 8px; }
@@ -305,7 +304,6 @@ fbq('track', 'PageView');
   <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary">Unlock Full System</a>
 </div>
 
-<!-- MailerLite JS -->
 <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1775464");</style>
 <style type="text/css">
   .ml-form-embedSubmitLoad { display: inline-block; width: 20px; height: 20px; }
@@ -465,11 +463,31 @@ function getTimeRemaining() {
   return { days, hours, minutes };
 }
 
-/* MailerLite success callback */
+/* MailerLite success callback (Original fallback) */
 function ml_webform_success_39679611() {
   grantAccess();
   routeUser();
 }
+
+/* MailerLite success callback (New updated form: 184286829174851310) */
+window.ml_webform_success_184286829174851310 = function() {
+  const email = window._capturedEmail || "";
+  const btn = document.querySelector("#preview-gate-form button");
+  if (btn) btn.textContent = "Unlocking...";
+  
+  fetch("https://virtueasy-pricing-tool-verification.morgan-2bf.workers.dev", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ 
+      action: "grant", 
+      email: email,
+      groups: [182482041026119069] 
+    }),
+  }).finally(() => {
+    grantAccess();
+    routeUser(); // This triggers the SPA instead of redirecting the user entirely
+  });
+};
 
 /* =============================================
    ROUTING
@@ -495,286 +513,56 @@ function routeUser() {
   }
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Preview: The 30-Day VA System | VIRTUEASY</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css">
-
-  <style>
-    :root {
-      --pink: #FF1F7A;
-      --pink-dark: #D91565;
-      --black: #0A0A0A;
-      --white: #FFFFFF;
-      --gray-mid: #888;
-      --font-display: 'Bebas Neue', sans-serif;
-      --font-body: 'Barlow', sans-serif;
-    }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--black);
-      color: var(--white);
-      -webkit-font-smoothing: antialiased;
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    nav {
-      padding: 1.25rem 2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(10,10,10,0.85);
-      backdrop-filter: blur(16px);
-      z-index: 10;
-    }
-
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      letter-spacing: 0.08em;
-      color: var(--white);
-      text-decoration: none;
-    }
-
-    .nav-logo span { color: var(--pink); }
-
-    .hero {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding: 2rem;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,31,122,0.18) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
-    }
-
-    .gate {
-      max-width: 440px;
-      width: 100%;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-      animation: fadeUp 0.6s ease both;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 16px;
-      background: rgba(255,31,122,0.12);
-      border: 1px solid rgba(255,31,122,0.3);
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--pink);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-
-    .hero-tag::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--pink);
-      border-radius: 50%;
-      animation: pulse 2s ease infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.7); }
-    }
-
-    .gate h1 {
-      font-family: var(--font-display);
-      font-size: clamp(40px, 8vw, 56px);
-      font-weight: 400;
-      line-height: 0.95;
-      color: var(--white);
-      margin-bottom: 16px;
-      letter-spacing: 0.02em;
-    }
-
-    .gate h1 em {
-      font-style: normal;
-      color: var(--pink);
-      display: block;
-    }
-
-    .subtitle {
-      font-size: 15px;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.6;
-      margin-bottom: 32px;
-    }
-
-    .form-area {
-      background: rgba(255,255,255,0.03);
-      border-radius: 20px;
-      padding: 32px 24px;
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-    }
-
-    .form-input {
-      width: 100%;
-      padding: 16px;
-      font-size: 15px;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 12px;
-      background: #0A0A0A;
-      color: var(--white);
-      outline: none;
-      transition: border-color 0.2s;
-      font-family: inherit;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-
-    .form-input:focus {
-      border-color: var(--pink);
-    }
-
-    .form-input::placeholder {
-      color: rgba(255,255,255,0.3);
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 16px;
-      font-size: 16px;
-      font-weight: 700;
-      background: var(--pink);
-      color: var(--white);
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: inherit;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      box-shadow: 0 4px 16px rgba(255,31,122,0.25);
-    }
-
-    .submit-btn:hover {
-      background: var(--pink-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255,31,122,0.35);
-    }
-
-    .bottom-note {
-      font-size: 12px;
-      color: rgba(255,255,255,0.3);
-      margin-top: 24px;
-    }
-
-    .bottom-note a {
-      color: var(--pink);
-      text-decoration: none;
-      font-weight: 600;
-    }
-  </style>
-  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
-</head>
-<body>
-
-  <nav>
-    <a href="/" class="nav-logo">VIRTU<span>EASY</span></a>
-  </nav>
-
-  <div class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-
-    <div class="gate">
-      <div class="hero-tag">Limited Access</div>
-
-      <h1>Try The System<br><em>Before You Buy</em></h1>
-
-      <p class="subtitle">Enter your email to unlock 3 full interactive days of <strong>The 30-Day VA System</strong>, including our AI Discovery Call tools.</p>
-
-      <div class="form-area">
-        <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2199748/forms/184286829174851310/subscribe" method="post" target="_blank" id="preview-gate-form">
-          <input type="email" class="form-input" name="fields[email]" placeholder="Enter your best email..." required>
-          <input type="hidden" name="ml-submit" value="1">
-          <button type="submit" class="submit-btn">Unlock My Preview &rarr;</button>
-        </form>
+/* =============================================
+   GATE SCREEN
+   ============================================= */
+function renderGate() {
+  document.getElementById('gateScreen').style.display = '';
+  document.getElementById('gateScreen').innerHTML = `
+    <div class="gate-screen">
+      <div class="gate-hero">
+        <div class="hero-tag" style="display:inline-flex;align-items:center;gap:8px;padding:7px 16px;background:rgba(255,31,122,0.12);border:1px solid rgba(255,31,122,0.3);border-radius:100px;font-size:12px;font-weight:700;color:var(--pink);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px;">Limited Access</div>
+        <h1>Try The System<br><em>Before You Buy</em></h1>
+        <p>Enter your email to unlock 3 full interactive days of <strong>The 30-Day VA System</strong>, including our AI Discovery Call tools.</p>
+        
+        <div class="gate-form-wrap" style="margin-top: 24px;">
+          <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2199748/forms/184286829174851310/subscribe" method="post" target="_blank" id="preview-gate-form">
+            <input type="email" class="form-input" name="fields[email]" placeholder="Enter your best email..." required style="width: 100%; padding: 14px 16px; font-size: 0.95rem; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 12px; background: rgba(0,0,0,0.5); color: var(--white); outline: none; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; text-align: center;">
+            <input type="hidden" name="ml-submit" value="1">
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 1rem; padding: 14px;">Unlock My Preview &rarr;</button>
+          </form>
+          <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 16px;">Free access. No spam. A Virtueasy tool.</p>
+        </div>
       </div>
-
-      <p class="bottom-note">Free access. No spam. A <a href="/">Virtueasy</a> tool.</p>
-    </div>
-  </div>
-
-  <script>
-    // Target Group ID for MailerLite
-    const SYSTEM_PREVIEW_GROUP_ID = '182482041026119069';
-
-    // Capture the email input as they type
-    document.addEventListener("input", function(e) {
-      if (e.target && e.target.name === "fields[email]") {
-        window._capturedEmail = e.target.value;
-      }
-    });
-
-    // Success callback triggered by MailerLite script
-    window.ml_webform_success_184286829174851310 = function() {
-      const email = window._capturedEmail || "";
-      const btn = document.querySelector(".submit-btn");
-      if (btn) btn.textContent = "Unlocking...";
       
-      fetch("https://virtueasy-pricing-tool-verification.morgan-2bf.workers.dev", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
-          action: "grant", 
-          email: email,
-          groups: [182482041026119069] 
-        }),
-      }).finally(() => {
-        localStorage.setItem('ve_system_preview_unlocked', 'true');
-        window.location.href = "/va-system-preview/unlocked.html";
-      });
-    };
-  </script>
+      <div class="gate-features">
+        <div class="gate-feat">
+          <div class="gate-feat-icon">⚡️</div>
+          <div class="gate-feat-title">Fully Interactive</div>
+          <div class="gate-feat-desc">Experience the system exactly as paying members do.</div>
+        </div>
+        <div class="gate-feat">
+          <div class="gate-feat-icon">🤖</div>
+          <div class="gate-feat-title">AI Tools Included</div>
+          <div class="gate-feat-desc">Test drive the custom script generators.</div>
+        </div>
+        <div class="gate-feat">
+          <div class="gate-feat-icon">⏱️</div>
+          <div class="gate-feat-title">7-Day Access</div>
+          <div class="gate-feat-desc">Your preview link expires in 7 days.</div>
+        </div>
+      </div>
+    </div>
+  `;
 
-</body>
-</html>
+  // Attach the event listener to capture email as they type
+  const emailInput = document.querySelector('input[name="fields[email]"]');
+  if (emailInput) {
+    emailInput.addEventListener("input", function(e) {
+      window._capturedEmail = e.target.value;
+    });
+  }
+}
 
 /* =============================================
    EXPIRED SCREEN
