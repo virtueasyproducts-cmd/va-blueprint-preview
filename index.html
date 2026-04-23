@@ -16,7 +16,7 @@ fbq('track', 'PageView');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The 30-Day VA System - Free Preview: Days 10-12</title>
+<title>The VA Blueprint - Free Preview: Days 10-12</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -191,7 +191,7 @@ fbq('track', 'PageView');
   .gate-hero h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--white); line-height: 1.15; margin-bottom: 16px; position: relative; z-index: 1; }
   .gate-hero h1 em { font-style: italic; color: var(--pink-light); }
   .gate-hero p { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.65; position: relative; z-index: 1; max-width: 500px; margin: 0 auto; }
-  .gate-form-wrap { max-width: 440px; margin: 0 auto 32px; position: relative; z-index: 2; }
+  .gate-form-wrap { max-width: 440px; margin: 0 auto 32px; }
   .gate-features { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 32px; }
   .gate-feat { background: var(--white); border: 1.5px solid rgba(0,0,0,0.08); border-radius: 14px; padding: 20px 16px; text-align: center; }
   .gate-feat-icon { font-size: 1.6rem; margin-bottom: 8px; }
@@ -283,7 +283,7 @@ fbq('track', 'PageView');
     <div class="celebrate-price"><s>$27</s> <strong>$14</strong></div>
     <div class="celebrate-code">Use code <code>PREVIEW30</code> at checkout</div>
   </div>
-  <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="celebrate-cta">Get the Full 30 Days for $14 →</a>
+  <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="celebrate-cta">Get the Full Blueprint for $14 →</a>
   <button class="celebrate-dismiss" onclick="dismissCelebration()">I'll keep exploring the preview</button>
 </div>
 <canvas class="confetti-canvas" id="confettiCanvas"></canvas>
@@ -301,7 +301,7 @@ fbq('track', 'PageView');
 
 <div class="sticky-banner" id="stickyBanner" style="display:none;">
   <div class="sticky-banner-text">Get all 30 days + AI tools: <s>$27</s> <strong>$14</strong></div>
-  <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary">Unlock Full System</a>
+  <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary">Unlock Full Blueprint</a>
 </div>
 
 <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1775464");</style>
@@ -463,33 +463,11 @@ function getTimeRemaining() {
   return { days, hours, minutes };
 }
 
-/* MailerLite success callback (Original fallback) */
+/* MailerLite success callback */
 function ml_webform_success_39679611() {
   grantAccess();
   routeUser();
 }
-
-/* MailerLite success callback (New updated form: 184286829174851310) */
-window.ml_webform_success_184286829174851310 = function() {
-  const email = window._capturedEmail || "";
-  const btn = document.querySelector("#preview-gate-form button");
-  if (btn) btn.textContent = "Unlocking...";
-  
-  // 1. IMMEDIATELY grant access and show the preview without waiting
-  grantAccess();
-  routeUser(); 
-  
-  // 2. Fire off the tracking to Cloudflare silently in the background
-  fetch("https://virtueasy-pricing-tool-verification.morgan-2bf.workers.dev", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ 
-      action: "grant", 
-      email: email,
-      groups: [182482041026119069] 
-    }),
-  }).catch(e => console.error("Worker sync failed", e));
-};
 
 /* =============================================
    ROUTING
@@ -523,59 +501,77 @@ function renderGate() {
   document.getElementById('gateScreen').innerHTML = `
     <div class="gate-screen">
       <div class="gate-hero">
-        <div class="hero-tag" style="display:inline-flex;align-items:center;gap:8px;padding:7px 16px;background:rgba(255,31,122,0.12);border:1px solid rgba(255,31,122,0.3);border-radius:100px;font-size:12px;font-weight:700;color:var(--pink);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px;">Limited Access</div>
-        <h1>Try The System<br><em>Before You Buy</em></h1>
-        <p>Enter your email to unlock 3 full interactive days of <strong>The 30-Day VA System</strong>, including our AI Discovery Call tools.</p>
-        
-        <div class="gate-form-wrap" style="margin-top: 24px;">
-          
-          <iframe name="hidden_ml_iframe" id="hidden_ml_iframe" style="display:none;"></iframe>
-          
-          <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2199748/forms/184286829174851310/subscribe" method="post" target="hidden_ml_iframe" id="preview-gate-form">
-            <input type="email" class="form-input" name="fields[email]" placeholder="Enter your best email..." required style="width: 100%; padding: 14px 16px; font-size: 0.95rem; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 12px; background: rgba(0,0,0,0.5); color: var(--white); outline: none; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; text-align: center;">
-            <input type="hidden" name="ml-submit" value="1">
-            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 1rem; padding: 14px;">Unlock My Preview &rarr;</button>
-          </form>
-          <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 16px;">Free access. No spam. A Virtueasy tool.</p>
-        </div>
+        <h1>Try The VA Blueprint<br><em>Before You Buy</em></h1>
+        <p>Get instant access to 3 full interactive days, including AI-powered tools. No credit card needed.</p>
       </div>
-      
       <div class="gate-features">
-        <div class="gate-feat">
-          <div class="gate-feat-icon">⚡️</div>
-          <div class="gate-feat-title">Fully Interactive</div>
-          <div class="gate-feat-desc">Experience the system exactly as paying members do.</div>
-        </div>
-        <div class="gate-feat">
-          <div class="gate-feat-icon">🤖</div>
-          <div class="gate-feat-title">AI Tools Included</div>
-          <div class="gate-feat-desc">Test drive the custom script generators.</div>
-        </div>
-        <div class="gate-feat">
-          <div class="gate-feat-icon">⏱️</div>
-          <div class="gate-feat-title">7-Day Access</div>
-          <div class="gate-feat-desc">Your preview link expires in 7 days.</div>
+        <div class="gate-feat"><div class="gate-feat-icon">📋</div><div class="gate-feat-title">3 Full Days</div><div class="gate-feat-desc">Real lessons from the 30-day system, fully interactive</div></div>
+        <div class="gate-feat"><div class="gate-feat-icon">🤖</div><div class="gate-feat-title">AI Tools</div><div class="gate-feat-desc">Generate discovery call scripts with the AI engine</div></div>
+        <div class="gate-feat"><div class="gate-feat-icon">⚡</div><div class="gate-feat-title">Instant Access</div><div class="gate-feat-desc">Start right now, straight in your browser</div></div>
+      </div>
+      <div class="gate-form-wrap">
+        <div id="mlb2-39679611" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-39679611">
+          <div class="ml-form-align-center">
+            <div class="ml-form-embedWrapper embedForm">
+              <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                <div class="ml-form-embedContent" style="">
+                  <h4>Get instant, in-browser access to a free preview of the VA Blueprint</h4>
+                  <p><br></p>
+                  <p>An interactive system that helps you land your first high-paying client in 30 days, no experience required.</p>
+                  <p>IN THIS PREVIEW: </p>
+                  <ul><li>3 full days of the Blueprint (my personal favorite lessons)</li></ul>
+                  <ul><li>How to handle objections and create content that brings clients to YOU</li></ul>
+                  <ul><li>Unrestricted access to my AI Discovery Call Question Generator so you can impress clients from day one</li></ul>
+                  <p><br></p>
+                </div>
+                
+                <iframe name="hidden_ml_iframe" style="display:none;"></iframe>
+
+                <form id="preview-gate-form" class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2199748/forms/184286829174851310/subscribe" data-code="" method="post" target="hidden_ml_iframe">
+                  <div class="ml-form-formContent">
+                    <div class="ml-form-fieldRow ml-last-item">
+                      <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                        <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email" required>
+                      </div>
+                    </div>
+                  </div>
+                  <input type="hidden" name="ml-submit" value="1">
+                  <div class="ml-form-embedSubmit">
+                    <button type="submit" class="primary">TAKE ME TO THE PREVIEW</button>
+                    <button disabled="disabled" style="display: none;" type="button" class="loading">
+                      <div class="ml-form-embedSubmitLoad"></div>
+                      <span class="sr-only">Loading...</span>
+                    </button>
+                  </div>
+                  <input type="hidden" name="anticsrf" value="true">
+                </form>
+              </div>
+              <div class="ml-form-successBody row-success" style="display: none">
+                <div class="ml-form-successContent">
+                  <h4>Thank you!</h4>
+                  <p>You have successfully joined our subscriber list.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  `;
+      <div class="footer-note">Owned and operated by <a href="https://messickmarketing.com/" target="_blank">Messick Marketing</a></div>
+    </div>`;
 
-  // Manually handle the submission sequence
+  // Attach the instant redirect interceptor to the newly injected form
   const form = document.getElementById('preview-gate-form');
   if (form) {
     form.addEventListener('submit', function() {
-      // 1. Capture the email for the Cloudflare worker
-      const emailInput = document.querySelector('input[name="fields[email]"]');
-      if (emailInput) {
-        window._capturedEmail = emailInput.value;
-      }
+      // Find the button inside the MailerLite embed structure
+      const btn = form.querySelector('.ml-form-embedSubmit button.primary');
+      if (btn) btn.textContent = "Unlocking...";
       
-      // 2. Give the form 500ms to POST to MailerLite via the iframe, then run your success logic
+      // Post to the invisible iframe, and immediately unlock the preview locally
       setTimeout(() => {
-        if(typeof window.ml_webform_success_184286829174851310 === 'function') {
-          window.ml_webform_success_184286829174851310();
-        }
-      }, 500);
+        grantAccess();
+        routeUser();
+      }, 400); // 400ms delay to ensure the browser has time to fire the POST request off
     });
   }
 }
