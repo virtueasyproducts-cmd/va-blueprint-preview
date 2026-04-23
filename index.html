@@ -495,115 +495,286 @@ function routeUser() {
   }
 }
 
-/* =============================================
-   GATE SCREEN
-   ============================================= */
-function renderGate() {
-  const gateEl = document.getElementById('gateScreen');
-  gateEl.style.display = '';
-  gateEl.innerHTML = `
-    <div class="gate-screen" style="max-width: 800px; margin: 0 auto; padding: 4rem 2rem; text-align: center;">
-      
-      <div class="gate-hero" style="margin-bottom: 3rem;">
-        <span class="badge" style="margin-bottom: 1.5rem;">Free Preview</span>
-        <h1 style="font-family: 'Bebas Neue'; font-size: clamp(3rem, 8vw, 5.5rem); line-height: 0.95; margin-bottom: 1rem;">
-          Try The 30-Day VA System<br><em style="color: var(--pink); font-style: normal;">Before You Buy</em>
-        </h1>
-        <p style="color: var(--muted); font-size: 1.1rem; max-width: 500px; margin: 0 auto;">
-          Get instant access to 3 full interactive days, including our AI-powered discovery call tools. No credit card needed.
-        </p>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Preview: The 30-Day VA System | VIRTUEASY</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
 
-      <div class="gate-features" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; text-align: left;">
-        <div class="gate-feat" style="background: #141214; border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 8px;">
-            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📋</div>
-            <div style="font-family: 'Bebas Neue'; font-size: 1.25rem; color: #fff;">3 Full Days</div>
-            <div style="font-size: 0.85rem; color: var(--muted);">Real lessons from the system, fully interactive</div>
-        </div>
-        <div class="gate-feat" style="background: #141214; border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 8px;">
-            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🤖</div>
-            <div style="font-family: 'Bebas Neue'; font-size: 1.25rem; color: #fff;">AI Tools</div>
-            <div style="font-size: 0.85rem; color: var(--muted);">Unrestricted access to our Script Generator</div>
-        </div>
-        <div class="gate-feat" style="background: #141214; border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 8px;">
-            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⚡</div>
-            <div style="font-family: 'Bebas Neue'; font-size: 1.25rem; color: #fff;">Instant Access</div>
-            <div style="font-size: 0.85rem; color: var(--muted);">Start right now, straight in your browser</div>
-        </div>
-      </div>
-
-      <div class="gate-form-wrap" style="background: #141214; border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; max-width: 500px; margin: 0 auto;">
-        <div id="mlb2-39679611" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-39679611">
-          <div class="ml-form-align-center">
-            <div class="ml-form-embedWrapper embedForm">
-              <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-                <div class="ml-form-embedContent" style="text-align: left; margin-bottom: 1.5rem;">
-                  <h4 style="font-family: 'Barlow'; font-weight: 700; color: #fff; margin-bottom: 0.5rem;">Unlock the Outreach Phase</h4>
-                  <p style="font-size: 0.9rem; color: var(--muted); line-height: 1.5;">Enter your email to access Days 10–12 and learn how to land high-paying clients without the stress.</p>
-                </div>
-                
-                <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2199748/forms/184286829174851310/subscribe" data-code="" method="post" target="_blank" id="preview-gate-form">
-                  <div class="ml-form-formContent">
-                    <div class="ml-form-fieldRow ml-last-item">
-                      <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                        <input aria-label="email" aria-required="true" type="email" class="form-control" name="fields[email]" placeholder="your@email.com" 
-                               style="width: 100%; padding: 0.85rem; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 4px; margin-bottom: 1rem;">
-                      </div>
-                    </div>
-                  </div>
-                  <input type="hidden" name="ml-submit" value="1">
-                  <div class="ml-form-embedSubmit">
-                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Get Free Access →</button>
-                  </div>
-                  <input type="hidden" name="anticsrf" value="true">
-                </form>
-              </div>
-              
-              <div class="ml-form-successBody row-success" style="display: none">
-                <div class="ml-form-successContent">
-                  <div style="font-size: 2rem; margin-bottom: 1rem;">🎉</div>
-                  <h4 style="color: var(--pink);">You're In!</h4>
-                  <p style="color: var(--muted);">Redirecting you to the system preview...</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-note" style="margin-top: 3rem; font-size: 0.75rem; color: var(--muted);">
-        &copy; ${new Date().getFullYear()} Virtueasy &middot; Owned and operated by <a href="https://messickmarketing.com/" target="_blank" style="text-decoration: underline; color: var(--muted);">Messick Marketing</a>
-      </div>
-    </div>`;
-
-  // Attach Capture Logic for the provided Group ID: 182482041026119069
-  const ACCESS_API = "https://virtueasy-pricing-tool-verification.morgan-2bf.workers.dev";
-  const SYSTEM_PREVIEW_GROUP_ID = '182482041026119069';
-
-  document.addEventListener("input", function(e) {
-    if (e.target && e.target.name === "fields[email]") {
-      window._capturedPreviewEmail = e.target.value;
+  <style>
+    :root {
+      --pink: #FF1F7A;
+      --pink-dark: #D91565;
+      --black: #0A0A0A;
+      --white: #FFFFFF;
+      --gray-mid: #888;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Barlow', sans-serif;
     }
-  });
 
-  // This success function name must match the MailerLite Form ID in the action URL above
-  window.ml_webform_success_184286829174851310 = function() {
-    const email = window._capturedPreviewEmail || "";
-    
-    fetch(ACCESS_API, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ 
-        action: "grant", 
-        email: email,
-        groups: [SYSTEM_PREVIEW_GROUP_ID] 
-      }),
-    }).finally(() => {
-      localStorage.setItem('ve_system_preview_unlocked', 'true');
-      window.location.href = "/va-system-preview/unlocked.html";
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(16px);
+      z-index: 10;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--pink); }
+
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,31,122,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    }
+
+    .gate {
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      background: rgba(255,31,122,0.12);
+      border: 1px solid rgba(255,31,122,0.3);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--pink);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--pink);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    .gate h1 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 8vw, 56px);
+      font-weight: 400;
+      line-height: 0.95;
+      color: var(--white);
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .gate h1 em {
+      font-style: normal;
+      color: var(--pink);
+      display: block;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .form-area {
+      background: rgba(255,255,255,0.03);
+      border-radius: 20px;
+      padding: 32px 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 16px;
+      font-size: 15px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      background: #0A0A0A;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: inherit;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .form-input:focus {
+      border-color: var(--pink);
+    }
+
+    .form-input::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      background: var(--pink);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 16px rgba(255,31,122,0.25);
+    }
+
+    .submit-btn:hover {
+      background: var(--pink-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255,31,122,0.35);
+    }
+
+    .bottom-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 24px;
+    }
+
+    .bottom-note a {
+      color: var(--pink);
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">VIRTU<span>EASY</span></a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+
+    <div class="gate">
+      <div class="hero-tag">Limited Access</div>
+
+      <h1>Try The System<br><em>Before You Buy</em></h1>
+
+      <p class="subtitle">Enter your email to unlock 3 full interactive days of <strong>The 30-Day VA System</strong>, including our AI Discovery Call tools.</p>
+
+      <div class="form-area">
+        <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2199748/forms/184286829174851310/subscribe" method="post" target="_blank" id="preview-gate-form">
+          <input type="email" class="form-input" name="fields[email]" placeholder="Enter your best email..." required>
+          <input type="hidden" name="ml-submit" value="1">
+          <button type="submit" class="submit-btn">Unlock My Preview &rarr;</button>
+        </form>
+      </div>
+
+      <p class="bottom-note">Free access. No spam. A <a href="/">Virtueasy</a> tool.</p>
+    </div>
+  </div>
+
+  <script>
+    // Target Group ID for MailerLite
+    const SYSTEM_PREVIEW_GROUP_ID = '182482041026119069';
+
+    // Capture the email input as they type
+    document.addEventListener("input", function(e) {
+      if (e.target && e.target.name === "fields[email]") {
+        window._capturedEmail = e.target.value;
+      }
     });
-  };
-}
+
+    // Success callback triggered by MailerLite script
+    window.ml_webform_success_184286829174851310 = function() {
+      const email = window._capturedEmail || "";
+      const btn = document.querySelector(".submit-btn");
+      if (btn) btn.textContent = "Unlocking...";
+      
+      fetch("https://virtueasy-pricing-tool-verification.morgan-2bf.workers.dev", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          action: "grant", 
+          email: email,
+          groups: [182482041026119069] 
+        }),
+      }).finally(() => {
+        localStorage.setItem('ve_system_preview_unlocked', 'true');
+        window.location.href = "/va-system-preview/unlocked.html";
+      });
+    };
+  </script>
+
+</body>
+</html>
 
 /* =============================================
    EXPIRED SCREEN
