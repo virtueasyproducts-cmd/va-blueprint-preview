@@ -16,7 +16,7 @@ fbq('track', 'PageView');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The VA Blueprint - Free Preview: Days 10-12</title>
+<title>The 30-Day VA System - Free Preview: Days 10-12</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -283,7 +283,7 @@ fbq('track', 'PageView');
     <div class="celebrate-price"><s>$27</s> <strong>$14</strong></div>
     <div class="celebrate-code">Use code <code>PREVIEW30</code> at checkout</div>
   </div>
-  <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="celebrate-cta">Get the Full Blueprint for $14 →</a>
+  <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="celebrate-cta">Get the Full 30 Days for $14 →</a>
   <button class="celebrate-dismiss" onclick="dismissCelebration()">I'll keep exploring the preview</button>
 </div>
 <canvas class="confetti-canvas" id="confettiCanvas"></canvas>
@@ -301,7 +301,7 @@ fbq('track', 'PageView');
 
 <div class="sticky-banner" id="stickyBanner" style="display:none;">
   <div class="sticky-banner-text">Get all 30 days + AI tools: <s>$27</s> <strong>$14</strong></div>
-  <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary">Unlock Full Blueprint</a>
+  <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary">Unlock Full System</a>
 </div>
 
 <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1775464");</style>
@@ -501,7 +501,7 @@ function renderGate() {
   document.getElementById('gateScreen').innerHTML = `
     <div class="gate-screen">
       <div class="gate-hero">
-        <h1>Try The VA Blueprint<br><em>Before You Buy</em></h1>
+        <h1>Try The System<br><em>Before You Buy</em></h1>
         <p>Get instant access to 3 full interactive days, including AI-powered tools. No credit card needed.</p>
       </div>
       <div class="gate-features">
@@ -515,11 +515,11 @@ function renderGate() {
             <div class="ml-form-embedWrapper embedForm">
               <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
                 <div class="ml-form-embedContent" style="">
-                  <h4>Get instant, in-browser access to a free preview of the VA Blueprint</h4>
+                  <h4>Get instant, in-browser access to a free preview of The 30-Day VA System</h4>
                   <p><br></p>
                   <p>An interactive system that helps you land your first high-paying client in 30 days, no experience required.</p>
                   <p>IN THIS PREVIEW: </p>
-                  <ul><li>3 full days of the Blueprint (my personal favorite lessons)</li></ul>
+                  <ul><li>3 full days of the System (my personal favorite lessons)</li></ul>
                   <ul><li>How to handle objections and create content that brings clients to YOU</li></ul>
                   <ul><li>Unrestricted access to my AI Discovery Call Question Generator so you can impress clients from day one</li></ul>
                   <p><br></p>
@@ -585,7 +585,7 @@ function renderExpired() {
     <div class="expired-screen">
       <div class="expired-icon">🔒</div>
       <h1>Your preview has <em>expired</em></h1>
-      <p>Your 7-day free preview window has closed. The full VA Blueprint gives you all 30 days, AI-powered tools, a client pipeline tracker, and daily journal prompts.</p>
+      <p>Your 7-day free preview window has closed. The full 30-Day VA System gives you all 30 days, AI-powered tools, a client pipeline tracker, and daily journal prompts.</p>
       <div style="margin-bottom:16px;">
         <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px;">
           <span style="font-size:1.1rem;color:var(--gray);text-decoration:line-through;">$27</span>
@@ -593,7 +593,7 @@ function renderExpired() {
         </div>
         <div style="font-size:0.78rem;color:var(--gray);margin-bottom:20px;">Use code PREVIEW30 at checkout</div>
       </div>
-      <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary" style="font-size:1rem;padding:15px 36px;">Get the Full Blueprint</a>
+      <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary" style="font-size:1rem;padding:15px 36px;">Get the Full System</a>
       <div class="footer-note" style="margin-top:40px;">Owned and operated by <a href="https://messickmarketing.com/" target="_blank">Messick Marketing</a></div>
     </div>`;
 }
@@ -620,7 +620,7 @@ const DAYS = [
   { title:"Master the Discovery Call", titleEm:"Discovery Call", focus:"Discovery calls aren't interviews — they're diagnostic conversations. Today you build your framework.", proTip:"The most powerful thing you can do on a discovery call is repeat their words back to them. Write down their exact phrasing. Then when you present your offer, use their language — not yours. It makes the solution feel tailor-made, because in that moment, it is.", time:"25", win:"A 5-question discovery call script you can use on your next prospect call.", tasks:[{text:"Write 5 open-ended questions that uncover your prospect's problem and urgency",tag:"15 min"},{text:"Script your opening 90 seconds: who you are, what the call will cover, what they can expect",tag:"5 min"},{text:"Plan your close: how will you present your offer and pricing at the end?",tag:"5 min"},{text:"Practice the full call out loud — record yourself on your phone",tag:"Practice"}], prompt:"What questions, if answered, would tell me everything I need to know about whether this person is the right client? What would a great discovery call feel like?", affirmation:"\"The best closer isn't the best talker. <span>They're the best listener.</span>\"",
     aiGenerator:{ type:"discovery", title:"AI discovery call question generator", subtitle:"Get a customised set of diagnostic questions for your specific niche.", fields:[{id:"niche",label:"Your niche",placeholder:"e.g. online course creators",type:"input"},{id:"pain",label:"Their main pain point",placeholder:"e.g. overwhelmed with launch admin",type:"input"},{id:"goal",label:"Outcome you help them achieve",placeholder:"e.g. a stress-free launch",type:"input"}],
     buildPrompt:function(v){return 'Write 5 open-ended discovery call questions for a virtual assistant speaking with a '+v.niche+'. The prospect\'s main pain: '+v.pain+'. The VA helps them achieve: '+v.goal+'. Questions should uncover urgency, budget readiness, past attempts, and decision-making process. Make them feel like a trusted advisor, not a job interview. Return ONLY the 5 numbered questions, nothing else.';},
-    nudge:{text:"Save these questions before your next call.",sub:"The full blueprint has 27 more days of strategies, scripts, and AI tools like this one."} }
+    nudge:{text:"Save these questions before your next call.",sub:"The full system has 27 more days of strategies, scripts, and AI tools like this one."} }
   },
   { title:"Handle Objections Before They Happen", titleEm:"Before They Happen", focus:"\"I need to think about it\" is code for something. Today you learn to decode it — and respond with confidence.", proTip:"The objection you fear most is the one you're least prepared for — and prospects sense that hesitation. Rehearse your responses until they feel natural, not defensive. The goal isn't to win an argument. It's to help someone who wants to say yes find a reason to.", time:"20", win:"A written response to the 3 most common objections in your niche.", tasks:[{text:"List the top 3 objections you expect: price, timing, \"I'll do it myself\"",tag:"5 min"},{text:"For each one, write a response that acknowledges, reframes, and redirects — not defends",tag:"15 min"},{text:"Role-play each objection with a friend, partner, or yourself in the mirror",tag:"Practice"},{text:"Save your responses where you can reference them before every call",tag:"Save"}], prompt:"What am I most afraid someone will say on a call? Why does that feel threatening — and what's the truth underneath my fear?", affirmation:"\"An objection is not a rejection. <span>It's a question wearing a trench coat.</span>\"" }
 ];
@@ -660,7 +660,7 @@ function renderHome() {
   const shortTitles = DAYS.map(d => { const w = d.title.split(' '); return w.slice(0,3).join(' ') + (w.length > 3 ? '…' : ''); });
   let html = `<div class="home-screen">
   ${renderCountdown()}
-  <div class="home-hero"><h1>Free Preview:<br><em>Days 10–12</em></h1><p>Try 3 real days from The VA Blueprint. Fully interactive. See what the full 30-day system feels like.</p></div>
+  <div class="home-hero"><h1>Free Preview:<br><em>Days 10–12</em></h1><p>Try 3 real days from The 30-Day VA System. Fully interactive. See what the full 30-day system feels like.</p></div>
   <div class="overall-progress" style="margin-top:0;margin-bottom:28px;"><h3>Preview Progress</h3><div class="big-progress"><div class="big-progress-bar"><div class="big-progress-fill" style="width:${pct}%"></div></div><div class="big-progress-pct">${completed.length}/3 days</div></div></div>
   <div class="days-grid">`;
   DAYS.forEach((d, i) => {
@@ -670,10 +670,10 @@ function renderHome() {
   html += `</div>
   <div class="unlock-cta">
     <h2>Ready for all <em>30 days</em>?</h2>
-    <p>This preview is just 3 days. The full VA Blueprint gives you 30 days of step-by-step action, AI-powered script generators, a built-in client pipeline tracker, and daily journal prompts.</p>
+    <p>This preview is just 3 days. The full 30-Day VA System gives you 30 days of step-by-step action, AI-powered script generators, a built-in client pipeline tracker, and daily journal prompts.</p>
     <div class="price-row"><span class="price-old">$27</span><span class="price-new">$14</span></div>
     <div class="price-note">Preview-only discount. Use code at checkout.</div>
-    <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary">Get the Full Blueprint</a>
+    <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary">Get the Full System</a>
     <div class="code-hint">Use code <code>PREVIEW30</code> at checkout</div>
   </div>
   <div class="footer-note">Owned and operated by <a href="https://messickmarketing.com/" target="_blank">Messick Marketing</a></div>
@@ -888,10 +888,10 @@ function downloadNotes(dayIndex) {
   const d = DAYS[dayIndex];
   const tasks = [...document.querySelectorAll('#taskList .task-item')].map(t => `${t.classList.contains('done')?'[x]':'[ ]'} ${t.querySelector('.task-text').textContent.trim()}`).join('\n');
   const journal = document.getElementById('journalEntry').value || '(no notes written yet)';
-  const content = `THE VA BLUEPRINT (PREVIEW) — Day ${dayIndex+10} Notes\n${'='.repeat(48)}\n\nDAY TITLE: ${d.title}\n\nTASKS:\n${tasks}\n\nJOURNAL PROMPT:\n${d.prompt}\n\nMY ANSWER:\n${journal}\n\nDate saved: ${new Date().toLocaleDateString()}\n\nGet the full 30-day blueprint at $14 with code PREVIEW30: https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05`;
+  const content = `THE 30-DAY VA SYSTEM (PREVIEW) — Day ${dayIndex+10} Notes\n${'='.repeat(48)}\n\nDAY TITLE: ${d.title}\n\nTASKS:\n${tasks}\n\nJOURNAL PROMPT:\n${d.prompt}\n\nMY ANSWER:\n${journal}\n\nDate saved: ${new Date().toLocaleDateString()}\n\nGet the full 30-day system at $14 with code PREVIEW30: https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05`;
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([content],{type:'text/plain'}));
-  a.download = `VA-Blueprint-Day${dayIndex+10}-Notes.txt`;
+  a.download = `VA-System-Day${dayIndex+10}-Notes.txt`;
   a.click();
 }
 
