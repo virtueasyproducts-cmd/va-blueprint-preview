@@ -17,7 +17,7 @@ fbq('track', 'PageView');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The VA Blueprint - Free Preview: Days 10-12</title>
+<title>The 30-Day VA System - Free Preview: Days 10-12</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -284,7 +284,7 @@ fbq('track', 'PageView');
     <div class="celebrate-price"><s>$27</s> <strong>$14</strong></div>
     <div class="celebrate-code">Use code <code>PREVIEW30</code> at checkout</div>
   </div>
-  <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="celebrate-cta">Get the Full Blueprint for $14 →</a>
+  <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="celebrate-cta">Get the Full 30 Days for $14 →</a>
   <button class="celebrate-dismiss" onclick="dismissCelebration()">I'll keep exploring the preview</button>
 </div>
 <canvas class="confetti-canvas" id="confettiCanvas"></canvas>
@@ -302,7 +302,7 @@ fbq('track', 'PageView');
 
 <div class="sticky-banner" id="stickyBanner" style="display:none;">
   <div class="sticky-banner-text">Get all 30 days + AI tools: <s>$27</s> <strong>$14</strong></div>
-  <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary">Unlock Full Blueprint</a>
+  <a href="https://buy.stripe.com/6oU3cxeav7xyaft8iE63K05" class="btn btn-primary">Unlock Full System</a>
 </div>
 
 <!-- MailerLite JS -->
@@ -499,64 +499,110 @@ function routeUser() {
    GATE SCREEN
    ============================================= */
 function renderGate() {
-  document.getElementById('gateScreen').style.display = '';
-  document.getElementById('gateScreen').innerHTML = `
-    <div class="gate-screen">
-      <div class="gate-hero">
-        <h1>Try The VA Blueprint<br><em>Before You Buy</em></h1>
-        <p>Get instant access to 3 full interactive days, including AI-powered tools. No credit card needed.</p>
+  const gateEl = document.getElementById('gateScreen');
+  gateEl.style.display = '';
+  gateEl.innerHTML = `
+    <div class="gate-screen" style="max-width: 800px; margin: 0 auto; padding: 4rem 2rem; text-align: center;">
+      
+      <div class="gate-hero" style="margin-bottom: 3rem;">
+        <span class="badge" style="margin-bottom: 1.5rem;">Free Preview</span>
+        <h1 style="font-family: 'Bebas Neue'; font-size: clamp(3rem, 8vw, 5.5rem); line-height: 0.95; margin-bottom: 1rem;">
+          Try The 30-Day VA System<br><em style="color: var(--pink); font-style: normal;">Before You Buy</em>
+        </h1>
+        <p style="color: var(--muted); font-size: 1.1rem; max-width: 500px; margin: 0 auto;">
+          Get instant access to 3 full interactive days, including our AI-powered discovery call tools. No credit card needed.
+        </p>
       </div>
-      <div class="gate-features">
-        <div class="gate-feat"><div class="gate-feat-icon">📋</div><div class="gate-feat-title">3 Full Days</div><div class="gate-feat-desc">Real lessons from the 30-day system, fully interactive</div></div>
-        <div class="gate-feat"><div class="gate-feat-icon">🤖</div><div class="gate-feat-title">AI Tools</div><div class="gate-feat-desc">Generate discovery call scripts with the AI engine</div></div>
-        <div class="gate-feat"><div class="gate-feat-icon">⚡</div><div class="gate-feat-title">Instant Access</div><div class="gate-feat-desc">Start right now, straight in your browser</div></div>
+
+      <div class="gate-features" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; text-align: left;">
+        <div class="gate-feat" style="background: #141214; border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 8px;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📋</div>
+            <div style="font-family: 'Bebas Neue'; font-size: 1.25rem; color: #fff;">3 Full Days</div>
+            <div style="font-size: 0.85rem; color: var(--muted);">Real lessons from the system, fully interactive</div>
+        </div>
+        <div class="gate-feat" style="background: #141214; border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 8px;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🤖</div>
+            <div style="font-family: 'Bebas Neue'; font-size: 1.25rem; color: #fff;">AI Tools</div>
+            <div style="font-size: 0.85rem; color: var(--muted);">Unrestricted access to our Script Generator</div>
+        </div>
+        <div class="gate-feat" style="background: #141214; border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 8px;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⚡</div>
+            <div style="font-family: 'Bebas Neue'; font-size: 1.25rem; color: #fff;">Instant Access</div>
+            <div style="font-size: 0.85rem; color: var(--muted);">Start right now, straight in your browser</div>
+        </div>
       </div>
-      <div class="gate-form-wrap">
+
+      <div class="gate-form-wrap" style="background: #141214; border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; max-width: 500px; margin: 0 auto;">
         <div id="mlb2-39679611" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-39679611">
           <div class="ml-form-align-center">
             <div class="ml-form-embedWrapper embedForm">
               <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-                <div class="ml-form-embedContent" style="">
-                  <h4>Get instant, in-browser access to a free preview of the VA Blueprint</h4>
-                  <p><br></p>
-                  <p>An interactive system that helps you land your first high-paying client in 30 days, no experience required.</p>
-                  <p>IN THIS PREVIEW: </p>
-                  <ul><li>3 full days of the Blueprint (my personal favorite lessons)</li></ul>
-                  <ul><li>How to handle objections and create content that brings clients to YOU</li></ul>
-                  <ul><li>Unrestricted access to my AI Discovery Call Question Generator so you can impress clients from day one</li></ul>
-                  <p><br></p>
+                <div class="ml-form-embedContent" style="text-align: left; margin-bottom: 1.5rem;">
+                  <h4 style="font-family: 'Barlow'; font-weight: 700; color: #fff; margin-bottom: 0.5rem;">Unlock the Outreach Phase</h4>
+                  <p style="font-size: 0.9rem; color: var(--muted); line-height: 1.5;">Enter your email to access Days 10–12 and learn how to land high-paying clients without the stress.</p>
                 </div>
-                <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2199748/forms/184286829174851310/subscribe" data-code="" method="post" target="_blank">
+                
+                <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2199748/forms/184286829174851310/subscribe" data-code="" method="post" target="_blank" id="preview-gate-form">
                   <div class="ml-form-formContent">
                     <div class="ml-form-fieldRow ml-last-item">
                       <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                        <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+                        <input aria-label="email" aria-required="true" type="email" class="form-control" name="fields[email]" placeholder="your@email.com" 
+                               style="width: 100%; padding: 0.85rem; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 4px; margin-bottom: 1rem;">
                       </div>
                     </div>
                   </div>
                   <input type="hidden" name="ml-submit" value="1">
                   <div class="ml-form-embedSubmit">
-                    <button type="submit" class="primary">TAKE ME TO THE PREVIEW</button>
-                    <button disabled="disabled" style="display: none;" type="button" class="loading">
-                      <div class="ml-form-embedSubmitLoad"></div>
-                      <span class="sr-only">Loading...</span>
-                    </button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Get Free Access →</button>
                   </div>
                   <input type="hidden" name="anticsrf" value="true">
                 </form>
               </div>
+              
               <div class="ml-form-successBody row-success" style="display: none">
                 <div class="ml-form-successContent">
-                  <h4>Thank you!</h4>
-                  <p>You have successfully joined our subscriber list.</p>
+                  <div style="font-size: 2rem; margin-bottom: 1rem;">🎉</div>
+                  <h4 style="color: var(--pink);">You're In!</h4>
+                  <p style="color: var(--muted);">Redirecting you to the system preview...</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="footer-note">Owned and operated by <a href="https://messickmarketing.com/" target="_blank">Messick Marketing</a></div>
+
+      <div class="footer-note" style="margin-top: 3rem; font-size: 0.75rem; color: var(--muted);">
+        &copy; ${new Date().getFullYear()} Virtueasy &middot; Owned and operated by <a href="https://messickmarketing.com/" target="_blank" style="text-decoration: underline; color: var(--muted);">Messick Marketing</a>
+      </div>
     </div>`;
+
+  // Attach Capture Logic for the provided Group ID: 182482041026119069
+  const ACCESS_API = "https://virtueasy-pricing-tool-verification.morgan-2bf.workers.dev";
+  const SYSTEM_PREVIEW_GROUP_ID = '182482041026119069';
+
+  document.addEventListener("input", function(e) {
+    if (e.target && e.target.name === "fields[email]") {
+      window._capturedPreviewEmail = e.target.value;
+    }
+  });
+
+  // This success function name must match the MailerLite Form ID in the action URL above
+  window.ml_webform_success_184286829174851310 = function() {
+    const email = window._capturedPreviewEmail || "";
+    
+    fetch(ACCESS_API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ 
+        action: "grant", 
+        email: email,
+        groups: [SYSTEM_PREVIEW_GROUP_ID] 
+      }),
+    }).finally(() => {
+      localStorage.setItem('ve_system_preview_unlocked', 'true');
+      window.location.href = "/va-system-preview/unlocked.html";
+    });
+  };
 }
 
 /* =============================================
